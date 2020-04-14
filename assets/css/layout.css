@@ -344,7 +344,7 @@ ul#nav li a:hover{color: #F06000;}
   	-webkit-animation: cjava 2s ease;
 }
 .flask {
-   width: 60%;
+   width: 50%;
    -moz-animation: flask 2s ease;
    -webkit-animation: flask 2s ease;
 }
@@ -389,7 +389,7 @@ ul#nav li a:hover{color: #F06000;}
 }
 @-moz-keyframes flask {
    0%   { width: 0px;  }
-   100% { width: 60%;  }
+   100% { width: 50%;  }
 }
 @-moz-keyframes flutter {
   0%   { width: 0px;  }
@@ -426,7 +426,7 @@ ul#nav li a:hover{color: #F06000;}
  }
  @-webkit-keyframes flask {
     0%   { width: 0px;  }
-    100% { width: 60%;  }
+    100% { width: 50%;  }
  }
  @-webkit-keyframes flutter {
    0%   { width: 0px;  }

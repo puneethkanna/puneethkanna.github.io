@@ -81,7 +81,7 @@
 
 		var h = $('header').height();
 		var y = $(window).scrollTop();
-      var nav = $('#nav-wrap');
+      var nav = $('#mainNav');
 
 	   if ( (y > h*.20) && (y < h) && ($(window).outerWidth() > 768 ) ) {
 	      nav.fadeOut('fast');
@@ -175,14 +175,20 @@
       });
       return false;
    });
+// ========================================================================= //
+  //  Typed Js
+  // ========================================================================= +//
 
+  var typed = $(".typed");
 
+  $(function() {
+    typed.typed({
+      strings: [ "a Developer,", "a Photographer,", "an Open Source Contributer,", "the ONE you're looking for."],
+      typeSpeed: 10,
+      backSpeed: 0,
+      smartBackspace: true,
+      fadeOut: true,
+      loop: true,
+    });
+   });
 });
-
-
-
-
-
-
-
-

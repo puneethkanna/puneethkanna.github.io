@@ -135,7 +135,7 @@ img::-moz-selection {
 
 #mainNav .navbar-nav .nav-item .nav-link {
   font-size: 95%;
-  font-weight: 500;
+  font-weight: 550;
   padding: 0.75em 0;
   letter-spacing: 1px;
   color: rgb(0, 0, 0);
@@ -155,9 +155,10 @@ img::-moz-selection {
     background-color: transparent;
   }
   #mainNav .navbar-brand {
-    font-size: 1.75em;
+    font-size: 2em;
     transition: all 0.3s;
     color: #fed136;
+    font-weight: 600;
   }
   #mainNav .navbar-nav .nav-item .nav-link {
     padding: 1.1em 1em !important;
@@ -165,7 +166,7 @@ img::-moz-selection {
   #mainNav.navbar-shrink {
     padding-top: 0;
     padding-bottom: 0;
-    background-color: #3a3a3a;
+    background-color: #ffffff;
   }
   #mainNav.navbar-shrink .navbar-brand {
     font-size: 1.75em;
