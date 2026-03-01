@@ -1,0 +1,60 @@
+4️⃣ Projects (Enhanced – Portfolio & Interview Ready)
+🏢 Enterprise B2B Onboarding & Product Management Platform
+Overview
+
+A large-scale enterprise platform enabling organizations to onboard partners, manage agreements, publish products, and track business opportunities in a secure, multi-tenant environment.
+
+My Role
+
+Core backend developer and architecture contributor.
+
+Involved from project initiation to production release.
+
+Delivered critical modules across multiple MVP phases.
+
+Key Highlights
+
+Built scalable microservices using reactive programming.
+
+Designed event-driven workflows for onboarding and lifecycle management.
+
+Integrated with multiple enterprise systems (PLM, ESB, external APIs).
+
+Implemented robust security and tenant-based access controls.
+
+Optimized large data responses for performance and network efficiency.
+
+Successfully deployed MVP1 to production and contributed heavily to MVP2.
+
+Impact
+
+Enabled seamless partner onboarding at scale.
+
+Reduced API response time significantly through optimization strategies.
+
+Delivered reusable components adopted across projects.
+
+Ensured governance compliance and service reusability.
+
+📩 Centralized Notification Engine (Reusable Microservice)
+Overview
+
+A generic, reusable notification service supporting email and SMS communication for multiple enterprise projects.
+
+Key Contributions
+
+Designed dynamic onboarding for new client projects.
+
+Built asynchronous feedback processing system.
+
+Developed configurable architecture to minimize future development effort.
+
+Reduced duplication by creating a shared notification framework.
+
+Impact
+
+Standardized communication across multiple enterprise projects.
+
+Improved system reliability with feedback-based status tracking.
+
+Reduced integration effort for new projects significantly.
