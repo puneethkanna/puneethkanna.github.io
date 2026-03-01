@@ -10,7 +10,7 @@
 - **2026-03-01**: Phase 3 (Animations & Effects) completed. GSAP ScrollTrigger and Lenis smooth scroll fully integrated and verified.
 
 ## Known Issues
-- `assets/sections` directory mentioned by user not yet located (using `index.html` as fallback).
+None.
 
 ## Context Memory
 - User prefers "simple, sweet, and stunning" (Brittany Chiang + Satya Lokesh).
