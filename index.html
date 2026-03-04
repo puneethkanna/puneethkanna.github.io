@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
   <meta charset="utf-8">
@@ -10,7 +10,7 @@
   <meta name="keywords"
     content="Microservices, Java, Spring Boot, WebFlux, Kafka, TMF Open API, Puneeth, Developer Portfolio">
 
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://puneethkanna.github.io/">
   <meta property="og:title" content="Puneeth | Senior Microservices Developer">
@@ -29,302 +29,449 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
 
-  <!-- Custom CSS -->
+  <!-- CSS -->
   <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- GSAP & Lenis (Smooth Scroll) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
 </head>
 
 <body id="page-top">
 
-  <!-- Navigation -->
-  <nav>
-    <div class="container">
-      <a class="nav-brand" href="#page-top">puneeth.</a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
+  <!-- ═══════════════════════════════════════════════
+       RADIANT BLUR BACKGROUND
+       ═══════════════════════════════════════════════ -->
+  <div class="radiant-bg" aria-hidden="true">
+    <div class="radiant-orb radiant-orb--1"></div>
+    <div class="radiant-orb radiant-orb--2"></div>
+    <div class="radiant-orb radiant-orb--3"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       PRELOADER
+       ═══════════════════════════════════════════════ -->
+  <div id="preloader" class="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="preloader-line"></div>
+      <span class="preloader-text">loading</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       SCROLL PROGRESS BAR
+       ═══════════════════════════════════════════════ -->
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════════ -->
+  <nav id="navbar" class="nav">
+    <div class="container nav__inner">
+      <a class="nav__brand" href="#page-top">puneeth<span class="accent">.</span></a>
+
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#about" class="nav__link" data-section="about">About</a></li>
+        <li><a href="#experience" class="nav__link" data-section="experience">Experience</a></li>
+        <li><a href="#skills" class="nav__link" data-section="skills">Skills</a></li>
+        <li><a href="#projects" class="nav__link" data-section="projects">Projects</a></li>
+        <li><a href="#contact" class="nav__link" data-section="contact">Contact</a></li>
       </ul>
-      <div style="display: flex; gap: 1rem; align-items: center;">
-        <a href="assets/PuneethResume_Final.pdf" target="_blank" class="btn btn-secondary"
-          style="padding: 0.5rem 1rem; border: 1px solid var(--border-color);" aria-label="View Resume PDF">Resume</a>
-        <button class="theme-toggle" aria-label="Toggle Light/Dark Theme">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-            <path
-              d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z">
-            </path>
+
+      <div class="nav__actions">
+        <a href="assets/PuneethResume_Final.pdf" target="_blank" class="btn btn--outline btn--sm"
+          aria-label="View Resume PDF">Resume</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Light/Dark Theme">
+          <!-- Sun icon (shown in dark mode) -->
+          <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
           </svg>
+          <!-- Moon icon (shown in light mode) -->
+          <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+          </svg>
+        </button>
+        <button id="hamburger" class="hamburger" aria-label="Toggle Menu" aria-expanded="false">
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
         </button>
       </div>
     </div>
   </nav>
 
+  <!-- ═══════════════════════════════════════════════
+       MOBILE MENU OVERLAY
+       ═══════════════════════════════════════════════ -->
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <ul class="mobile-menu__links">
+      <li><a href="#about" class="mobile-menu__link">About</a></li>
+      <li><a href="#experience" class="mobile-menu__link">Experience</a></li>
+      <li><a href="#skills" class="mobile-menu__link">Skills</a></li>
+      <li><a href="#projects" class="mobile-menu__link">Projects</a></li>
+      <li><a href="#contact" class="mobile-menu__link">Contact</a></li>
+    </ul>
+    <a href="assets/PuneethResume_Final.pdf" target="_blank"
+      class="btn btn--primary btn--lg mobile-menu__resume">Download
+      Resume</a>
+  </div>
+
   <main>
-    <!-- Hero Section -->
-    <header id="home" class="hero section">
-      <!-- Perlin Noise Animated Background — Phase 6.1 -->
-      <div class="hero-noise-layer" aria-hidden="true">
-        <svg class="noise-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-          <defs>
-            <filter id="noise-filter" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
-              <feTurbulence id="noise-turbulence" type="fractalNoise" baseFrequency="0.0035 0.0045" numOctaves="2"
-                seed="2" stitchTiles="stitch" result="noise" />
-              <feColorMatrix type="saturate" values="2.5" in="noise" result="colored-noise" />
-              <feBlend in="SourceGraphic" in2="colored-noise" mode="screen" result="blended" />
-              <feComponentTransfer in="blended">
-                <feFuncA type="linear" slope="var(--blob-intensity, 0.12)" />
-              </feComponentTransfer>
-            </filter>
-          </defs>
-          <rect width="100%" height="100%" filter="url(#noise-filter)" class="noise-rect" />
-        </svg>
+    <!-- ═══════════════════════════════════════════════
+         HERO SECTION
+         ═══════════════════════════════════════════════ -->
+    <header id="hero" class="hero section">
+      <canvas id="hero-canvas" class="hero__canvas" aria-hidden="true"></canvas>
+      <div class="container hero__content">
+        <p class="hero__greeting reveal-text">Hi, my name is</p>
+        <h1 class="hero__name reveal-text">Puneeth<span class="accent">.</span></h1>
+        <h2 class="hero__tagline reveal-text">I build scalable enterprise systems.</h2>
+        <p class="hero__desc reveal-text">
+          A <strong>Senior Microservices Developer</strong> with <strong>4.5+ years</strong> of experience
+          designing event-driven enterprise platforms using Java, Spring Boot, and Spring WebFlux.
+        </p>
+        <div class="hero__cta reveal-text">
+          <div class="btn-magnetic">
+            <a href="#about" class="btn btn--primary">
+              <span class="btn__fill"></span>
+              <span>Explore My Work</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <polyline points="19 12 12 19 5 12" />
+              </svg>
+            </a>
+          </div>
+          <div class="btn-magnetic">
+            <a href="assets/PuneethResume_Final.pdf" target="_blank" class="btn btn--outline">
+              <span class="btn__fill"></span>
+              <span>Download Resume</span>
+            </a>
+          </div>
+        </div>
       </div>
-      <div class="container">
-        <h4 class="text-muted" style="margin-bottom: 0.5rem;">Hi, my name is</h4>
-        <h1 class="elastic-text"><span>Puneeth.</span></h1>
-        <h1 class="text-muted elastic-text">
-          <span>I</span> <span>build</span> <span>scalable</span> <span>enterprise</span> <span>systems.</span>
-        </h1>
-        <p>I am a <strong>Senior Microservices Developer</strong> with <strong>4.5+ years</strong> of experience
-          designing
-          and building scalable, event-driven enterprise platforms using Java, Spring Boot, and Spring WebFlux.</p>
-        <div class="hero-btns">
-          <a href="#about" class="btn btn-primary ink-btn">
-            <span class="btn-text">About My Expertise</span>
-            <span class="ink-pool"></span>
-          </a>
-          <a href="assets/PuneethResume_Final.pdf" target="_blank" class="btn"
-            style="border: 1px solid var(--accent-color);" aria-label="Download Resume PDF">Download
-            Resume</a>
+      <div class="hero__scroll-hint" aria-hidden="true">
+        <div class="hero__scroll-mouse">
+          <div class="hero__scroll-dot"></div>
         </div>
       </div>
     </header>
 
-    <!-- Content Sections -->
+    <!-- ═══════════════════════════════════════════════
+         ABOUT SECTION
+         ═══════════════════════════════════════════════ -->
     <section id="about" class="section">
       <div class="container">
-        <h2 class="section-title"><span>About Me</span></h2>
-        <div class="about-content"
-          style="display: grid; grid-template-columns: 3fr 2fr; gap: 4rem; align-items: start;">
-          <div class="about-text">
+        <h2 class="section__title"><span class="section__number">01.</span> About Me</h2>
+        <div class="about">
+          <div class="about__text">
             <p>I am a <strong>Microservices Developer</strong> with 4.5+ years of experience designing and building
               scalable, event-driven enterprise platforms using Java, Spring Boot, and Spring WebFlux.</p>
             <p>I specialize in <strong>Reactive Microservices Architecture</strong> and implementation of <strong>TM
                 Forum (TMF) Open APIs</strong>. I have a proven track record of delivering complex API orchestration and
               integrations, from architecture design to production deployment.</p>
-            <p>My work focus: <code>&lt;REACTIVE&gt; &lt;EVENT-DRIVEN&gt; &lt;SECURE&gt; &lt;SCALABLE/&gt;</code></p>
-
-            <div style="margin-top: 2rem;">
-              <p class="text-muted">Core Competencies:</p>
-              <ul
-                style="display: grid; grid-template-columns: repeat(2, minmax(180px, 1fr)); gap: 0.5rem 1rem; list-style: none; padding: 0; margin-top: 1rem;">
-                <li class="skill-item">Java (JDK 17/20)</li>
-                <li class="skill-item">Spring Boot / WebFlux</li>
-                <li class="skill-item">Event-Driven (Kafka)</li>
-                <li class="skill-item">Keycloak Security</li>
-                <li class="skill-item">TMF Open APIs</li>
-                <li class="skill-item">Performance Optimization</li>
+            <p class="about__focus"><code>&lt;REACTIVE&gt; &lt;EVENT-DRIVEN&gt; &lt;SECURE&gt;
+                &lt;SCALABLE/&gt;</code></p>
+            <div class="about__competencies">
+              <p class="label">Core Competencies:</p>
+              <ul class="about__skills-grid">
+                <li>Java (JDK 21)</li>
+                <li>Spring Boot / WebFlux</li>
+                <li>Event-Driven (Kafka)</li>
+                <li>Keycloak Security</li>
+                <li>TMF Open APIs</li>
+                <li>Performance Optimization</li>
               </ul>
             </div>
           </div>
-          <div class="about-image" style="position: relative; max-width: 300px;">
-            <div
-              style="position: relative; border: 2px solid var(--accent-color); border-radius: 4px; padding: 0.5rem;">
+          <div class="about__image-wrap">
+            <div class="about__image-border">
               <img src="assets/images/profile2.jpg" alt="Puneeth - Senior Microservices Developer" loading="lazy"
-                style="width: 100%; border-radius: 2px; filter: grayscale(100%) contrast(1.1); transition: filter 0.3s ease;">
+                class="about__image">
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ═══════════════════════════════════════════════
+         EXPERIENCE SECTION
+         ═══════════════════════════════════════════════ -->
     <section id="experience" class="section">
       <div class="container">
-        <h2 class="section-title"><span>Professional Experience</span></h2>
-        <div class="experience-list">
-          <div class="experience-item"
-            style="border-left: 2px solid var(--border-color); padding-left: 2rem; position: relative; margin-bottom: 2rem;">
-            <h3 style="margin-bottom: 0.25rem;">Senior Microservices Developer</h3>
-            <p class="text-muted" style="font-size: 0.9rem; margin-bottom: 1.5rem;">4.5+ Years | Java | Spring Boot |
-              Reactive Architecture</p>
-            <ul style="list-style: none; padding: 0;">
-              <li class="list-item"><strong>Scalable Architecture:</strong> Developed reactive microservices using
-                Spring Boot & WebFlux with event-driven design using Kafka.</li>
-              <li class="list-item"><strong>Multi-Tenancy & Security:</strong> Implemented role-based access control
-                (RBAC) and data isolation integrated with Keycloak.</li>
-              <li class="list-item"><strong>Optimization:</strong> Improved API response times by 30% through payload
-                optimization and parallel processing.</li>
-              <li class="list-item"><strong>API Standards:</strong> Built and governed APIs aligned with TMF Open API
-                standards for enterprise reuse.</li>
-              <li class="list-item"><strong>Ownership:</strong> Successfully delivered MVP1 & MVP2 phases for B2B
-                onboarding and product management platforms.</li>
-            </ul>
+        <h2 class="section__title"><span class="section__number">02.</span> Experience</h2>
+
+        <div class="timeline">
+          <!-- Timeline Item 1 -->
+          <div class="timeline__item">
+            <div class="timeline__marker"></div>
+            <div class="timeline__content">
+              <h3 class="timeline__role">Senior Microservices Developer</h3>
+              <p class="timeline__meta">4.5+ Years &middot; Java &middot; Spring Boot &middot; Reactive Architecture
+              </p>
+              <ul class="timeline__details">
+                <li><strong>Scalable Architecture:</strong> Developed reactive microservices using Spring Boot & WebFlux
+                  with event-driven design using Kafka.</li>
+                <li><strong>Enterprise Integration:</strong> Designed onboarding workflows, agreement lifecycle
+                  management, and integrated with PLM, ESB, and external APIs.</li>
+                <li><strong>Security & Multi-Tenancy:</strong> Implemented RBAC and tenant-level data isolation
+                  integrated with Keycloak.</li>
+                <li><strong>Optimization:</strong> Improved API response times by 30% through payload optimization and
+                  parallel processing.</li>
+                <li><strong>API Standards:</strong> Built and governed APIs aligned with TMF Open API standards for
+                  enterprise reuse.</li>
+                <li><strong>Ownership:</strong> Successfully delivered MVP1 & MVP2 phases for B2B onboarding and product
+                  management platforms.</li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        <div class="skills-list" style="margin-top: 4rem;">
-          <h2 class="section-title"><span>Skills & Expertise</span></h2>
-          <div class="skills-categories">
-
-            <!-- Programming Languages -->
-            <div class="skill-category" data-category-color="var(--color-java)">
-              <h4 class="category-label">Programming Languages</h4>
-              <div class="skill-pills">
-                <span class="skill-pill">Java (JDK 21)</span>
-                <span class="skill-pill">Shell Scripting</span>
-                <span class="skill-pill">SQL</span>
-                <span class="skill-pill">CriteriaBuilder</span>
-              </div>
+        <!-- Education -->
+        <div class="education">
+          <h3 class="section__subtitle">Education</h3>
+          <div class="education__grid">
+            <div class="education__item">
+              <h4>Bachelor's Degree</h4>
+              <p class="text-muted">Vardhaman College of Engineering, Computer Science &middot; GPA: 8.3</p>
             </div>
-
-            <!-- Frameworks & Libraries -->
-            <div class="skill-category" data-category-color="var(--color-reactive)">
-              <h4 class="category-label">Frameworks & Libraries</h4>
-              <div class="skill-pills">
-                <span class="skill-pill">Spring Boot</span>
-                <span class="skill-pill">Spring WebFlux</span>
-                <span class="skill-pill">Reactive Programming</span>
-                <span class="skill-pill">Hibernate</span>
-              </div>
+            <div class="education__item">
+              <h4>Intermediate</h4>
+              <p class="text-muted">Resonance Junior College, M.P.C &middot; 92.1% (March 2017)</p>
             </div>
-
-            <!-- AI & Agentic Tools -->
-            <div class="skill-category" data-category-color="var(--accent-secondary)">
-              <h4 class="category-label">AI & Agentic Tools</h4>
-              <div class="skill-pills">
-                <span class="skill-pill">LangChain</span>
-                <span class="skill-pill">Gemini SDK</span>
-                <span class="skill-pill">Agentic Workflows</span>
-                <span class="skill-pill">Prompt Engineering</span>
-              </div>
-            </div>
-
-            <!-- API & Web Development -->
-            <div class="skill-category" data-category-color="var(--accent-color)">
-              <h4 class="category-label">API & Web Development</h4>
-              <div class="skill-pills">
-                <span class="skill-pill">TMF Open APIs</span>
-                <span class="skill-pill">RESTful Architectures</span>
-                <span class="skill-pill">HTML / CSS / JS</span>
-                <span class="skill-pill">API Gateway</span>
-              </div>
-            </div>
-
-            <!-- DB & Infrastructure -->
-            <div class="skill-category" data-category-color="var(--color-devops)">
-              <h4 class="category-label">DB & Infrastructure</h4>
-              <div class="skill-pills">
-                <span class="skill-pill">PostgreSQL</span>
-                <span class="skill-pill">Redis</span>
-                <span class="skill-pill">Kafka</span>
-                <span class="skill-pill">Docker</span>
-              </div>
-            </div>
-
-            <!-- Software Architecture & Security -->
-            <div class="skill-category" data-category-color="var(--color-security)">
-              <h4 class="category-label">Security & Architecture</h4>
-              <div class="skill-pills">
-                <span class="skill-pill">Keycloak (OIDC)</span>
-                <span class="skill-pill">RBAC / RB-Isolation</span>
-                <span class="skill-pill">Multi-Tenancy</span>
-                <span class="skill-pill">Design Patterns</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="education-list" style="margin-top: 4rem;">
-          <h2 class="section-title"><span>Education</span></h2>
-          <div class="education-item" style="margin-bottom: 2rem;">
-            <h3>Bachelor's Degree</h3>
-            <p class="text-muted">Vardhaman College of Engineering, Computer Science | GPA: 8.3</p>
-          </div>
-          <div class="education-item" style="margin-bottom: 2rem;">
-            <h3>Intermediate</h3>
-            <p class="text-muted">Resonance Junior College, M.P.C | 92.1% (March 2017)</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ═══════════════════════════════════════════════
+         SKILLS SECTION
+         ═══════════════════════════════════════════════ -->
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section__title"><span class="section__number">03.</span> Skills & Expertise</h2>
+        <div class="skills-grid">
+
+          <!-- Programming Languages -->
+          <div class="skill-card" data-accent="var(--color-java)">
+            <h4 class="skill-card__label">Programming Languages</h4>
+            <div class="skill-card__pills">
+              <span class="pill">Java (JDK 21)</span>
+              <span class="pill">SQL</span>
+              <span class="pill">Shell Scripting</span>
+              <span class="pill">CriteriaBuilder</span>
+            </div>
+          </div>
+
+          <!-- Frameworks & Libraries -->
+          <div class="skill-card" data-accent="var(--color-reactive)">
+            <h4 class="skill-card__label">Frameworks & Libraries</h4>
+            <div class="skill-card__pills">
+              <span class="pill">Spring Boot</span>
+              <span class="pill">Spring WebFlux</span>
+              <span class="pill">Reactive Programming</span>
+              <span class="pill">Hibernate</span>
+              <span class="pill">Virtual Threads</span>
+            </div>
+          </div>
+
+          <!-- AI & Agentic Tools -->
+          <div class="skill-card" data-accent="var(--accent-secondary)">
+            <h4 class="skill-card__label">AI & Agentic Tools</h4>
+            <div class="skill-card__pills">
+              <span class="pill">LangChain</span>
+              <span class="pill">Gemini SDK</span>
+              <span class="pill">Agentic Workflows</span>
+              <span class="pill">Prompt Engineering</span>
+            </div>
+          </div>
+
+          <!-- Architecture & Design -->
+          <div class="skill-card" data-accent="var(--color-security)">
+            <h4 class="skill-card__label">Architecture & Design</h4>
+            <div class="skill-card__pills">
+              <span class="pill">Microservices Architecture</span>
+              <span class="pill">Event-Driven Architecture</span>
+              <span class="pill">Domain-Driven API Design</span>
+              <span class="pill">TMF Open API Standards</span>
+              <span class="pill">Multi-Tenant System Design</span>
+            </div>
+          </div>
+
+          <!-- Security & Access Control -->
+          <div class="skill-card" data-accent="var(--accent-color)">
+            <h4 class="skill-card__label">Security & Access Control</h4>
+            <div class="skill-card__pills">
+              <span class="pill">Keycloak (OIDC)</span>
+              <span class="pill">OAuth2 / Token Validation</span>
+              <span class="pill">RBAC / RB-Isolation</span>
+              <span class="pill">Tenant-Level Data Isolation</span>
+            </div>
+          </div>
+
+          <!-- DB & Infrastructure -->
+          <div class="skill-card" data-accent="var(--color-devops)">
+            <h4 class="skill-card__label">DB & Infrastructure</h4>
+            <div class="skill-card__pills">
+              <span class="pill">PostgreSQL</span>
+              <span class="pill">MongoDB</span>
+              <span class="pill">Redis</span>
+              <span class="pill">Apache Kafka</span>
+              <span class="pill">Docker</span>
+            </div>
+          </div>
+
+          <!-- DevOps & Deployment -->
+          <div class="skill-card" data-accent="var(--color-database)">
+            <h4 class="skill-card__label">DevOps & Tools</h4>
+            <div class="skill-card__pills">
+              <span class="pill">Git / GitHub / GitLab</span>
+              <span class="pill">Jenkins</span>
+              <span class="pill">Linux</span>
+              <span class="pill">Postman</span>
+              <span class="pill">API Gateway</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         PROJECTS SECTION
+         ═══════════════════════════════════════════════ -->
     <section id="projects" class="section">
       <div class="container">
-        <h2 class="section-title"><span>Featured Work</span></h2>
-        <div class="projects-grid"
-          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+        <h2 class="section__title"><span class="section__number">04.</span> Featured Work</h2>
+        <div class="projects-grid">
+
+          <!-- Project 1 -->
           <div class="project-card">
-            <h3 style="color: var(--accent-color);">Enterprise B2B Onboarding Platform</h3>
-            <p class="text-muted">Large-scale platform enabling partner onboarding, agreement management, and product
-              publishing in a multi-tenant environment.</p>
-            <ul class="clean-list" style="margin: 1.5rem 0; font-size: 0.9rem;">
+            <div class="project-card__header">
+              <svg class="project-card__icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5">
+                <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" />
+                <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
+              </svg>
+            </div>
+            <h3 class="project-card__title">Enterprise B2B Onboarding Platform</h3>
+            <p class="project-card__desc">Large-scale platform enabling partner onboarding, agreement management, and
+              product publishing in a multi-tenant environment.</p>
+            <ul class="project-card__highlights">
               <li>Delivered critical microservices across multiple MVP phases.</li>
               <li>Integrated complex enterprise systems (PLM, ESB).</li>
               <li>Optimized system for high-volume data handling.</li>
+              <li>Reduced API response time significantly through optimization strategies.</li>
             </ul>
-            <div class="project-tech"
-              style="display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.75rem; font-family: monospace;">
-              <span class="tech-tag">Java</span>
-              <span class="tech-tag">Spring WebFlux</span>
-              <span class="tech-tag">Kafka</span>
-              <span class="tech-tag">Keycloak</span>
+            <div class="project-card__tech">
+              <span>Java</span>
+              <span>Spring WebFlux</span>
+              <span>Kafka</span>
+              <span>Keycloak</span>
+              <span>TMF APIs</span>
             </div>
           </div>
+
+          <!-- Project 2 -->
           <div class="project-card">
-            <h3 style="color: var(--accent-color);">Centralized Notification Engine</h3>
-            <p class="text-muted">Generic, reusable notification service supporting multi-channel (Email, SMS)
+            <div class="project-card__header">
+              <svg class="project-card__icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <h3 class="project-card__title">Centralized Notification Engine</h3>
+            <p class="project-card__desc">Generic, reusable notification service supporting multi-channel (Email, SMS)
               communication for diverse enterprise projects.</p>
-            <ul class="clean-list" style="margin: 1.5rem 0; font-size: 0.9rem;">
+            <ul class="project-card__highlights">
               <li>Designed scalable client onboarding for new projects.</li>
               <li>Built asynchronous feedback and tracking systems.</li>
               <li>Standardized communication across enterprise portfolios.</li>
+              <li>Reduced integration effort for new projects significantly.</li>
             </ul>
-            <div class="project-tech"
-              style="display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.75rem; font-family: monospace;">
-              <span class="tech-tag">Microservices</span>
-              <span class="tech-tag">Asynchronous</span>
-              <span class="tech-tag">API Integration</span>
+            <div class="project-card__tech">
+              <span>Microservices</span>
+              <span>Asynchronous</span>
+              <span>API Integration</span>
+              <span>Kafka</span>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
+    <!-- ═══════════════════════════════════════════════
+         CONTACT SECTION
+         ═══════════════════════════════════════════════ -->
     <section id="contact" class="section">
-      <div class="container" style="text-align: center; max-width: 600px; margin: 0 auto;">
-        <h2 class="section-title" style="justify-content: center;"><span>Get In Touch</span></h2>
-        <p>I'm currently looking for new opportunities and my inbox is always open. Whether you have a question or just
-          want to say hi, I'll try my best to get back to you!</p>
-        <div style="margin-top: 3rem;">
-          <a href="mailto:neerukondapuneeth@gmail.com" class="btn btn-primary"
-            style="padding: 1.25rem 2.5rem; font-size: 1.1rem;">Say Hello</a>
-        </div>
-        <div class="social-links-footer" style="margin-top: 4rem; display: flex; justify-content: center; gap: 2rem;">
-          <a href="https://github.com/puneethkanna" target="_blank" class="social-link"
-            aria-label="Puneeth's GitHub Profile">GitHub</a>
-          <a href="https://linkedin.com/in/neerukonda-puneeth" target="_blank" class="social-link"
-            aria-label="Puneeth's LinkedIn Profile">LinkedIn</a>
-          <a href="https://twitter.com/puneeth_kanna" target="_blank" class="social-link"
-            aria-label="Puneeth's Twitter Profile">Twitter</a>
+      <div class="container contact">
+        <p class="contact__overline">05. What's Next?</p>
+        <h2 class="contact__title">Get In Touch</h2>
+        <p class="contact__desc">I'm currently looking for new opportunities and my inbox is always open. Whether you
+          have a question or just want to say hi, I'll try my best to get back to you!</p>
+        <div class="btn-magnetic">
+          <a href="mailto:neerukondapuneeth@gmail.com" class="btn btn--primary btn--lg contact__cta">
+            <span class="btn__fill"></span>
+            <span>Say Hello</span>
+          </a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Global Scripts -->
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer__socials">
+      <!-- GitHub -->
+      <a href="https://github.com/puneethkanna" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+        class="footer__social-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+        </svg>
+      </a>
+      <!-- LinkedIn -->
+      <a href="https://linkedin.com/in/neerukonda-puneeth" target="_blank" rel="noopener noreferrer"
+        aria-label="LinkedIn" class="footer__social-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+        </svg>
+      </a>
+      <!-- Twitter / X -->
+      <a href="https://twitter.com/puneeth_kanna" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
+        class="footer__social-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+        </svg>
+      </a>
+    </div>
+    <p class="footer__credit">Built with care by <strong>Puneeth</strong></p>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════
+       SCRIPTS (order matters: theme first, then animations)
+       ═══════════════════════════════════════════════ -->
   <script src="assets/js/theme.js"></script>
-  <script src="assets/js/animations.js"></script>
-  <script>
-    requestAnimationFrame(raf);
-  </script>
+  <script src="assets/js/animations.js" defer></script>
 </body>
 
 </html>
