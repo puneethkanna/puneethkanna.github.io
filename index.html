@@ -66,19 +66,44 @@
     </div>
   </nav>
 
-  <main class="container">
+  <main>
     <!-- Hero Section -->
     <header id="home" class="hero section">
-      <h4 class="text-muted" style="margin-bottom: 0.5rem;">Hi, my name is</h4>
-      <h1>Puneeth.</h1>
-      <h1 class="text-muted">I build scalable enterprise systems.</h1>
-      <p>I am a <strong>Senior Microservices Developer</strong> with <strong>4.5+ years</strong> of experience designing
-        and building scalable, event-driven enterprise platforms using Java, Spring Boot, and Spring WebFlux.</p>
-      <div style="margin-top: 2rem;">
-        <a href="#about" class="btn btn-primary">About My Expertise</a>
-        <a href="assets/PuneethResume_Final.pdf" target="_blank" class="btn"
-          style="margin-left: 1rem; border: 1px solid var(--accent-color);" aria-label="Download Resume PDF">Download
-          Resume</a>
+      <!-- Perlin Noise Animated Background — Phase 6.1 -->
+      <div class="hero-noise-layer" aria-hidden="true">
+        <svg class="noise-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <defs>
+            <filter id="noise-filter" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+              <feTurbulence id="noise-turbulence" type="fractalNoise" baseFrequency="0.0035 0.0045" numOctaves="2"
+                seed="2" stitchTiles="stitch" result="noise" />
+              <feColorMatrix type="saturate" values="2.5" in="noise" result="colored-noise" />
+              <feBlend in="SourceGraphic" in2="colored-noise" mode="screen" result="blended" />
+              <feComponentTransfer in="blended">
+                <feFuncA type="linear" slope="var(--blob-intensity, 0.12)" />
+              </feComponentTransfer>
+            </filter>
+          </defs>
+          <rect width="100%" height="100%" filter="url(#noise-filter)" class="noise-rect" />
+        </svg>
+      </div>
+      <div class="container">
+        <h4 class="text-muted" style="margin-bottom: 0.5rem;">Hi, my name is</h4>
+        <h1 class="elastic-text"><span>Puneeth.</span></h1>
+        <h1 class="text-muted elastic-text">
+          <span>I</span> <span>build</span> <span>scalable</span> <span>enterprise</span> <span>systems.</span>
+        </h1>
+        <p>I am a <strong>Senior Microservices Developer</strong> with <strong>4.5+ years</strong> of experience
+          designing
+          and building scalable, event-driven enterprise platforms using Java, Spring Boot, and Spring WebFlux.</p>
+        <div class="hero-btns">
+          <a href="#about" class="btn btn-primary ink-btn">
+            <span class="btn-text">About My Expertise</span>
+            <span class="ink-pool"></span>
+          </a>
+          <a href="assets/PuneethResume_Final.pdf" target="_blank" class="btn"
+            style="border: 1px solid var(--accent-color);" aria-label="Download Resume PDF">Download
+            Resume</a>
+        </div>
       </div>
     </header>
 
@@ -146,35 +171,74 @@
 
         <div class="skills-list" style="margin-top: 4rem;">
           <h2 class="section-title"><span>Skills & Expertise</span></h2>
-          <div class="skills-grid"
-            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
-            <div>
-              <h4 style="color: var(--accent-color);">Backend</h4>
-              <ul class="clean-list">
-                <li>Java (17/20)</li>
-                <li>Spring Boot & WebFlux</li>
-                <li>Reactive Programming</li>
-                <li>CriteriaBuilder / JPQL</li>
-              </ul>
+          <div class="skills-categories">
+
+            <!-- Programming Languages -->
+            <div class="skill-category" data-category-color="var(--color-java)">
+              <h4 class="category-label">Programming Languages</h4>
+              <div class="skill-pills">
+                <span class="skill-pill">Java (JDK 21)</span>
+                <span class="skill-pill">Shell Scripting</span>
+                <span class="skill-pill">SQL</span>
+                <span class="skill-pill">CriteriaBuilder</span>
+              </div>
             </div>
-            <div>
-              <h4 style="color: var(--accent-color);">Architecture</h4>
-              <ul class="clean-list">
-                <li>Event-Driven (Kafka)</li>
-                <li>TMF Open APIs</li>
-                <li>Multi-Tenant Design</li>
-                <li>Layered Security</li>
-              </ul>
+
+            <!-- Frameworks & Libraries -->
+            <div class="skill-category" data-category-color="var(--color-reactive)">
+              <h4 class="category-label">Frameworks & Libraries</h4>
+              <div class="skill-pills">
+                <span class="skill-pill">Spring Boot</span>
+                <span class="skill-pill">Spring WebFlux</span>
+                <span class="skill-pill">Reactive Programming</span>
+                <span class="skill-pill">Hibernate</span>
+              </div>
             </div>
-            <div>
-              <h4 style="color: var(--accent-color);">DevOps & Tools</h4>
-              <ul class="clean-list">
-                <li>Docker / CI/CD</li>
-                <li>Linux / Shell</li>
-                <li>PostgreSQL / Redis</li>
-                <li>Postman / Git</li>
-              </ul>
+
+            <!-- AI & Agentic Tools -->
+            <div class="skill-category" data-category-color="var(--accent-secondary)">
+              <h4 class="category-label">AI & Agentic Tools</h4>
+              <div class="skill-pills">
+                <span class="skill-pill">LangChain</span>
+                <span class="skill-pill">Gemini SDK</span>
+                <span class="skill-pill">Agentic Workflows</span>
+                <span class="skill-pill">Prompt Engineering</span>
+              </div>
             </div>
+
+            <!-- API & Web Development -->
+            <div class="skill-category" data-category-color="var(--accent-color)">
+              <h4 class="category-label">API & Web Development</h4>
+              <div class="skill-pills">
+                <span class="skill-pill">TMF Open APIs</span>
+                <span class="skill-pill">RESTful Architectures</span>
+                <span class="skill-pill">HTML / CSS / JS</span>
+                <span class="skill-pill">API Gateway</span>
+              </div>
+            </div>
+
+            <!-- DB & Infrastructure -->
+            <div class="skill-category" data-category-color="var(--color-devops)">
+              <h4 class="category-label">DB & Infrastructure</h4>
+              <div class="skill-pills">
+                <span class="skill-pill">PostgreSQL</span>
+                <span class="skill-pill">Redis</span>
+                <span class="skill-pill">Kafka</span>
+                <span class="skill-pill">Docker</span>
+              </div>
+            </div>
+
+            <!-- Software Architecture & Security -->
+            <div class="skill-category" data-category-color="var(--color-security)">
+              <h4 class="category-label">Security & Architecture</h4>
+              <div class="skill-pills">
+                <span class="skill-pill">Keycloak (OIDC)</span>
+                <span class="skill-pill">RBAC / RB-Isolation</span>
+                <span class="skill-pill">Multi-Tenancy</span>
+                <span class="skill-pill">Design Patterns</span>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -196,7 +260,7 @@
       <div class="container">
         <h2 class="section-title"><span>Featured Work</span></h2>
         <div class="projects-grid"
-          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem;">
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
           <div class="project-card">
             <h3 style="color: var(--accent-color);">Enterprise B2B Onboarding Platform</h3>
             <p class="text-muted">Large-scale platform enabling partner onboarding, agreement management, and product
