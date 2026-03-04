@@ -45,3 +45,48 @@ Phase 6 is fully executed and verified. Session ended as per user's `/pause` req
 
 ### Handoff Notes
 Codebase is v2.0 ready for Phase 7 (Mobile Navigation). All global tokens are stable. Next session can begin directly with Plan 7.1.
+## Session: 2026-03-04 20:55
+
+### Objective
+Replace Lenis with "feel-good" GSAP scrolling and revamp the Skills section for better alignment and sizing.
+
+### Accomplished
+- **Scroll Overhaul**: Removed Lenis. Implemented native smooth scrolling with high-end GSAP elastic/spring physics for reveal animations.
+- **Skills Redesign**: Re-aligned skill pills into structured vertical lists. Re-tuned typography for a premium technical look.
+- **Bug Fix**: Resolved visibility issue where Skills were staying hidden on hard refresh. Implemented `fromTo` states and `ScrollTrigger` refresh safety timers.
+- **Visual Polish**: Balanced card sizing and padding across Skills and Projects sections for a cohesive "architect" feel.
+
+### Verification
+- [x] Scroll naturalness verified.
+- [x] Skill section alignment and visibility verified (manually and via subagent logs).
+- [x] Hard-refresh behavior tested with safety fallbacks.
+
+### Paused Because
+User requested `/pause` after successful implementation and verification of scroll/skills polish.
+
+### Handoff Notes
+The animation engine is now much more robust against layout shifts. The Skills section has shifted from a "tag cloud" style to a "technical list" style.
+
+## Session: 2026-03-05 00:45
+
+### Objective
+Implement premium interactivity overhaul (Phase 6 Final Polish) focusing on award-winning card and button interactions.
+
+### Accomplished
+- **3D Card Interactivity**: Added GSAP-powered 3D tilt and skew for Skill and Project cards.
+- **Hacker Logo Reveal**: Implemented a character-randomizer micro-interaction for the navbar brand.
+- **Advanced Button Logic**: Clubbed Cuberto-style liquid radial fill with Satya-style magnetic movement.
+- **Visual Polish**: Consolidated button CSS to fix sizing bugs (prevents wrapping, enforces pill-shape layout).
+- **Physics Tuning**: Refined GSAP elastic easing and reduced magnetic pull intensity for a more natural feel.
+
+### Verification
+- [x] Card 3D tilt verified via browser subagent.
+- [x] Hacker logo effect verified.
+- [x] Magnetic Liquid button interaction verified across all primary CTAs.
+- [x] Layout stability (no wrapping) confirmed at various viewports.
+
+### Paused Because
+User requested `/pause` for context hygiene and session handoff after successful feature completion.
+
+### Handoff Notes
+Interactivity is now at a "premium" baseline. All global UI tokens in `main.css` are updated. Next session should focus on Phase 7: Mobile Navigation.
