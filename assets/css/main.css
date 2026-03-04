@@ -1,3 +1,35 @@
+/* ============================================================
+   GLOBAL DESIGN TOKEN SYSTEM — v2.0 Phase 6.1
+   One place to control the entire portfolio palette + timings.
+   ============================================================ */
+:root {
+  /* --- Developer Identity Color Palette --- */
+  --color-java:      hsl(150, 60%, 45%);   /* Java / Spring Boot green */
+  --color-reactive:  hsl(190, 100%, 55%);  /* Kafka / WebFlux cyan */
+  --color-security:  hsl(38,  100%, 55%);  /* Keycloak / Auth amber */
+  --color-devops:    hsl(215,  60%, 60%);  /* DevOps / Docker steel blue */
+  --color-language:  hsl(265,  60%, 65%);  /* Programming languages violet */
+  --color-database:  hsl(0,    60%, 60%);  /* Database ruby-red */
+
+  /* --- Blob / Noise Variants (see TODO.md for A/B/C verification) --- */
+  /* Switch between: 0.04 (A-subtle) | 0.12 (C-section-aware) | 0.15 (B-ambient) */
+  --blob-intensity: 0.12;
+  --blob-speed: 20s;   /* Controls CSS keyframe duration for blob pulse */
+
+  /* --- Animation Timings --- */
+  --dur-instant: 0.1s;
+  --dur-fast:    0.2s;
+  --dur-normal:  0.4s;
+  --dur-slow:    0.8s;
+  --dur-xslow:   1.4s;
+
+  /* --- Easing Curves --- */
+  --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth:   cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-enter:    cubic-bezier(0, 0, 0.2, 1);
+  --ease-exit:     cubic-bezier(0.4, 0, 1, 1);
+}
+
 :root {
     /* Light Theme Tokens */
     --bg-color: #ffffff;
