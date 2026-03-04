@@ -19,7 +19,7 @@
 ---
 
 ### Phase 6: Interactivity Layer
-**Status**: ✅ Phase 6.1-6.3 Completed (Plan 6.4 Remaining)
+**Status**: ✅ Phase 6 Completed (6.1–6.4)
 **Objective**: Transform the portfolio from a static display into a living, interactive experience. All changes are append-only to existing files — zero breakage risk to v1.0.
 
 **Wave 1 — Foundation**
