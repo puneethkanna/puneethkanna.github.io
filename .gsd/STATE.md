@@ -1,64 +1,71 @@
 # GSD State — Puneeth Portfolio
 
 ## Current Position
-- **Phase**: Design Refresh — Ideation
-- **Task**: User is browsing reference portfolio sites for design inspiration
-- **Status**: Paused at 2026-03-06 22:23 IST
+- **Phase**: Design Refresh — Interactive Polish & Button Perfection
+- **Task**: All tasks complete. Awaiting git push confirmation.
+- **Status**: Paused at 2026-03-07 00:24 IST
 
 ## Last Session Summary
-This session focused on refining the hero section animation and then exploring a full design refresh.
+This long session (2026-03-06 → 2026-03-07) focused on completely overhauling the portfolio's interactive design elements, inspired by Cuberto.com and srisatyalokesh.github.io.
 
-### Hero Section Work (Completed)
-- Fixed broken hero animation caused by 100+ lines of duplicate/conflicting CSS at the bottom of `main.css`
-- Removed toxic duplicate `.hero__canvas` rules (3 definitions) that had `opacity: 0`, `backdrop-filter: blur(20px)`, `border-radius: 24px` killing the canvas
-- Removed duplicate `.hero__content` rules with `pointer-events: none` breaking button interactivity
-- Added ambient radial glow (`hero::before`) and vignette effect (`hero::after`) for atmospheric depth
-- Enhanced hero text with animated gradient shimmer (`textShine` keyframe), uppercase greeting, silver metallic tagline
-- Upgraded network graph engine: glow halos behind labeled nodes, breathing pulse via sine wave, denser connections (160px), labeled nodes biased to right 50% of screen
-- Fixed z-index layering: pseudo-elements at 0, canvas at 1, content at 2
-- Enhanced `.btn--primary` with neon glow box-shadow
-- All verified working via browser screenshots — zero JS errors
+### Completed This Session
+1. **Button Perfection (Cuberto Match)**
+   - Replaced CSS-based liquid fill with GSAP `scale()` animations
+   - Fixed the "very fast" bug: origin is now locked on `mouseenter`, not continuously updated on `mousemove`
+   - On `mouseleave`, fill circle glides toward the cursor exit point while scaling to 0 (exact Cuberto "suction" effect)
+   - Duration: 0.8s with `cubic-bezier(0.19, 1, 0.22, 1)` (Expo Out) for premium feel
+   - Standardized all button text to sentence case
 
-### Design Refresh Exploration (In Progress)
-- Generated 5 AI mockup concepts (Neo-Brutalism, Bento Box, Spatial Holographic, Organic Flow, Typographic Void)
-- User rejected all as "overfitted with data" or "not good"
-- Provided curated list of 13 real-world portfolio reference sites
-- **User is now browsing these references to find inspiration they resonate with**
+2. **Skills Section Masonry Grid**
+   - Switched `.skills-container` from flex column → CSS Columns (`column-count: 2`)
+   - `break-inside: avoid` prevents cards splitting across columns
+   - Cards are compact (padding 1.8rem, pills at 0.85rem font-size)
+
+3. **Custom Cursor Follower Optimization**
+   - Restricted `is-hovering` expansion to: `a`, `button`, `.btn-magnetic`, `.nav__brand`
+   - Removed erroneously from `.skill-pill`, `.project-card`, `.interactive`
+
+4. **Full Theme Consistency Audit**
+   - Extracted all hardcoded `rgba()` values to CSS custom properties
+   - Added: `--shadow-card`, `--shadow-card-hover`, `--shadow-pill-hover`, `--hero-glow-1`, `--hero-glow-2`, `--project-glass-1`, `--project-glass-2`, `--accent-color-rgb`
+   - Light theme properly overrides each variable for perfect contrast
 
 ## In-Progress Work
-- No uncommitted code changes pending — all hero fixes are saved
+- `git push` was running and may still be completing in background
 - Files modified this session:
-  - `assets/css/main.css` — Hero CSS cleanup + enhancements
-  - `assets/js/animations.js` — Network graph glow halos, breathing pulse, node positioning
+  - `assets/css/main.css` — Full button, skills, theme token overhaul
+  - `assets/js/animations.js` — GSAP button fill, cursor follower restriction, magnetic button logic
+  - `index.html` — Button text sentence case
 
 ## Blockers
-- Waiting on user to browse reference sites and report back what design elements they like
+- None. Session ended by user preference.
 
 ## Context Dump
 
 ### Decisions Made
-- Coral red (#FF4D5A) + Cyan (#4DD6E5) is the established color palette
-- Network graph animation with configurable tech labels is the hero animation (keep it)
-- Inter + JetBrains Mono are the font pairing
-- Dark-first theme with light mode override
+- Coral red `#FF4D5A` + Amber `#F4A261` is the established palette (dark mode)
+- Light mode accent: `#E63946`
+- Button liquid fill: GSAP scale from cursor entry/exit point — NOT CSS transition
+- Skills layout: CSS Columns masonry (not CSS Grid)
+- Cursor follower only expands on interactive clickable targets
 
 ### Current Design System (CSS Variables)
-- `--bg-primary: #0a0f1c` (dark), `--bg-secondary: #111827`
-- `--accent-color: #FF4D5A` (coral red), `--accent-secondary: #F4A261` (amber)
-- `--text-primary: #e2e8f0`, `--text-secondary: #94a3b8`
+```
+--bg-primary: #0a0f1c (dark) / #f8fafc (light)
+--bg-secondary: #111827 (dark) / #f1f5f9 (light)
+--accent-color: #FF4D5A (dark) / #E63946 (light)
+--accent-secondary: #F4A261 (dark) / #E09F3E (light)
+--text-primary: #e2e8f0 (dark) / #0f172a (light)
+--text-secondary: #94a3b8 (dark) / #475569 (light)
+```
 
 ### Files of Interest
-- `assets/css/main.css`: ~1367 lines, all styling
-- `assets/js/animations.js`: ~810 lines, GSAP animations + network graph engine
-- `index.html`: ~477 lines, full page structure
-
-### Reference Sites Shared With User
-1. brittanychiang.com, cuberto.com, dennissnellenberg.com
-2. linear.app, stripe.com, locomotive.ca
-3. rishi.cx, bruno-simon.com, aristidebenoist.com
+- `assets/css/main.css`: ~1429 lines
+- `assets/js/animations.js`: ~856 lines
+- `index.html`: ~667 lines
 
 ## Next Steps
-1. Wait for user to return with specific design references they liked
-2. Extract the exact elements they want (colors, layout, typography, animation style)
-3. Create a targeted implementation plan based on their chosen references
-4. Execute the design refresh
+1. Verify git push completed successfully (run `git log --oneline -3` to confirm)
+2. Test live site on GitHub Pages after push propagates
+3. Consider adding subtle page-scroll transitions between sections
+4. Potential future: Add project card hover image previews
