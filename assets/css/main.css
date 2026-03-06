@@ -23,7 +23,14 @@
     --nav-bg: rgba(10, 15, 28, 0.8);
     --glow-color: rgba(255, 77, 90, 0.15);
     --code-bg: rgba(30, 41, 59, 0.7);
-    --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
+    --shadow-card: 0 10px 30px -15px rgba(2, 12, 27, 0.3);
+    --shadow-card-hover: 0 20px 40px -20px rgba(2, 12, 27, 0.5);
+    --shadow-pill-hover: 0 10px 20px -10px rgba(0, 0, 0, 0.2);
+    --accent-color-rgb: 255, 77, 90;
+    --hero-glow-1: rgba(255, 77, 90, 0.08);
+    --hero-glow-2: rgba(77, 214, 229, 0.06);
+    --project-glass-1: rgba(255, 255, 255, 0.1);
+    --project-glass-2: rgba(255, 255, 255, 0.05);
 
     /* --- Typography --- */
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -68,7 +75,14 @@
     --nav-bg: rgba(248, 250, 252, 0.85);
     --glow-color: rgba(230, 57, 70, 0.1);
     --code-bg: rgba(241, 245, 249, 0.9);
-    --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.06);
+    --shadow-card: 0 10px 30px -15px rgba(15, 23, 42, 0.08);
+    --shadow-card-hover: 0 20px 40px -20px rgba(15, 23, 42, 0.15);
+    --shadow-pill-hover: 0 10px 20px -10px rgba(15, 23, 42, 0.1);
+    --accent-color-rgb: 230, 57, 70;
+    --hero-glow-1: rgba(230, 57, 70, 0.05);
+    --hero-glow-2: rgba(65, 90, 119, 0.03);
+    --project-glass-1: rgba(15, 23, 42, 0.03);
+    --project-glass-2: rgba(15, 23, 42, 0.01);
 
     --color-java: #1B263B;
     --color-reactive: #415A77;
@@ -88,24 +102,55 @@
     box-sizing: border-box;
 }
 
+/* ============================================================
+   GLOBAL STYLES & CURSOR
+   ============================================================ */
 html {
     font-size: 16px;
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
-}
-
-html {
-    scroll-behavior: smooth;
+    cursor: default;
 }
 
 body {
-    background: var(--bg-primary);
+    background-color: var(--bg-primary);
     color: var(--text-primary);
     font-family: var(--font-sans);
-    line-height: 1.7;
+    line-height: 1.6;
     overflow-x: hidden;
     transition: background-color var(--dur-slow) var(--ease-out),
         color var(--dur-slow) var(--ease-out);
+}
+
+/* Custom Mouse Follower */
+.cursor-follower {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    will-change: transform;
+    transition: width 0.3s var(--ease-premium),
+        height 0.3s var(--ease-premium),
+        background-color 0.3s var(--ease-premium);
+}
+
+.cursor-follower.is-hovering {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 1);
+    mix-blend-mode: difference;
+}
+
+/* Hide cursor on mobile or if user prefers reduced motion */
+@media (hover: none) or (prefers-reduced-motion: reduce) {
+    .cursor-follower {
+        display: none !important;
+    }
 }
 
 a {
@@ -155,7 +200,7 @@ strong {
 }
 
 /* ============================================================
-   RADIANT BACKGROUND
+   RADIANT BACKGROUND & MESH GRADIENT
    ============================================================ */
 .radiant-bg {
     position: fixed;
@@ -167,57 +212,55 @@ strong {
     transition: background-color var(--dur-slow) var(--ease-out);
 }
 
-.radiant-orb {
+/* Layered Mesh Gradient using multiple radial gradients */
+.radiant-bg::before,
+.radiant-bg::after {
+    content: '';
     position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    pointer-events: none;
     opacity: 0.12;
-    animation: orb-float 15s infinite alternate ease-in-out;
-    transform: translateZ(0);
-    /* hardware acceleration */
 }
 
-.radiant-orb--1 {
-    width: 60vw;
-    height: 60vw;
-    top: -20vw;
-    right: -10vw;
-    background: var(--accent-color);
+.radiant-bg::before {
+    background:
+        radial-gradient(circle at 20% 30%, var(--accent-color) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, var(--accent-secondary) 0%, transparent 40%),
+        radial-gradient(circle at 40% 80%, var(--color-reactive) 0%, transparent 50%);
+    filter: blur(80px);
+    animation: mesh-rotate 40s linear infinite;
 }
 
-.radiant-orb--2 {
-    width: 50vw;
-    height: 50vw;
-    bottom: -10vw;
-    left: -10vw;
-    background: var(--accent-secondary);
-    animation-delay: -5s;
-    animation-duration: 20s;
+.radiant-bg::after {
+    background:
+        radial-gradient(circle at 70% 60%, var(--accent-color) 0%, transparent 50%),
+        radial-gradient(circle at 10% 90%, var(--accent-secondary) 0%, transparent 40%),
+        radial-gradient(circle at 90% 10%, var(--color-reactive) 0%, transparent 50%);
+    filter: blur(100px);
+    animation: mesh-rotate 50s linear infinite reverse;
 }
 
-.radiant-orb--3 {
-    width: 40vw;
-    height: 40vw;
-    top: 40%;
-    left: 40%;
-    background: var(--color-reactive);
-    animation-delay: -10s;
-    animation-duration: 18s;
+[data-theme="light"] .radiant-bg::before,
+[data-theme="light"] .radiant-bg::after {
+    opacity: 0.08;
 }
 
-[data-theme="light"] .radiant-orb {
-    opacity: 0.15;
-}
-
-@keyframes orb-float {
+@keyframes mesh-rotate {
     0% {
-        transform: translateY(0) scale(1);
+        transform: rotate(0deg) scale(1.1);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(1.3);
     }
 
     100% {
-        transform: translateY(-50px) scale(1.1);
+        transform: rotate(360deg) scale(1.1);
     }
 }
+
 
 /* ============================================================
    LAYOUT
@@ -401,7 +444,7 @@ strong {
 }
 
 /* ============================================================
-   BUTTONS — Cuberto × Satya Pro (Fix: sizing & liquid fill)
+   BUTTONS — Exact Cuberto DNA
    ============================================================ */
 .btn-magnetic {
     display: inline-flex;
@@ -414,79 +457,88 @@ strong {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    padding: 1rem 2.5rem;
-    border-radius: 100px;
-    /* Cuberto-style pill shape */
-    font-weight: 600;
-    font-size: 1rem;
+    gap: 14px;
+    padding: 1.4rem 2.8rem;
+    /* Large, airy padding */
+    border-radius: 1000px;
+    /* Perfect pill shape */
+    font-weight: 500;
+    font-size: 1.1rem;
     font-family: var(--font-sans);
     cursor: pointer;
-    border: none;
+    border: 1px solid var(--accent-color);
+    /* Solid, crisp border */
+    background: transparent;
+    color: var(--accent-color);
     white-space: nowrap;
     overflow: hidden;
     isolation: isolate;
     text-decoration: none;
-    transition: transform 0.5s var(--ease-premium),
-        box-shadow 0.4s ease,
-        color 0.4s ease;
-    background: transparent;
-    color: var(--text-primary);
+    text-transform: none;
+    /* Sentence case as per Cuberto */
+    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+        border-color 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+        color 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .btn--primary {
     background: var(--accent-color);
     color: #fff;
+    border-color: var(--accent-color);
 }
 
 .btn--outline {
     background: transparent;
-    color: var(--accent-color);
-    border: 1.5px solid rgba(var(--accent-color-rgb, 100, 255, 218), 0.3);
+}
+
+.btn--sm {
+    padding: 0.8rem 1.8rem;
+    font-size: 0.95rem;
 }
 
 .btn--lg {
-    padding: 1.1rem 2.8rem;
-    font-size: 1.1rem;
+    padding: 1.6rem 3.2rem;
+    font-size: 1.2rem;
 }
 
 .btn:hover {
-    box-shadow: 0 10px 30px var(--glow-color);
+    box-shadow: 0 0 30px var(--glow-color);
     color: #fff;
     /* Removed heavy translate/skew that caused 'very large' look */
 }
 
-/* Cuberto Liquid Fill */
+/* Cuberto Liquid Fill Expansion (GSAP Controlled) */
 .btn__fill {
     position: absolute;
-    top: var(--y, 50%);
-    left: var(--x, 50%);
     width: 250%;
-    /* Large enough to cover but clipped by parent */
-    aspect-ratio: 1/1;
-    background: var(--accent-secondary);
-    border-radius: 100%;
+    aspect-ratio: 1 / 1;
+    background: var(--accent-color);
+    border-radius: 50%;
     transform: translate(-50%, -50%) scale(0);
-    transition: transform 0.6s var(--ease-premium);
     z-index: -1;
     pointer-events: none;
 }
 
-.btn:hover .btn__fill {
-    transform: translate(-50%, -50%) scale(1);
+/* Base specific color states handled by GSAP implicitly for background */
+.btn--primary .btn__fill {
+    background: #fff;
 }
 
-.btn span,
-.btn svg {
-    position: relative;
-    z-index: 2;
-    pointer-events: none;
-}
 
-/* Specific text color management on fill */
-.btn:hover span {
+.btn:hover {
     color: #fff;
+    border-color: var(--accent-color);
 }
+
+.btn--primary:hover {
+    color: var(--accent-color);
+    /* Reveal accent on primary expansion */
+}
+
+.btn:hover span {
+    color: inherit;
+}
+
 
 /* ============================================================
    THEME TOGGLE
@@ -615,6 +667,38 @@ strong {
     position: relative;
     overflow: hidden;
     padding-top: 5rem;
+    background: var(--bg-primary);
+}
+
+/* Ambient radial glow behind hero content */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 15%;
+    width: 50vw;
+    height: 50vh;
+    background: radial-gradient(ellipse at center,
+            var(--hero-glow-1) 0%,
+            var(--hero-glow-2) 40%,
+            transparent 70%);
+
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Subtle vignette for depth */
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center,
+            transparent 50%,
+            var(--bg-primary) 100%);
+    z-index: 0;
+    pointer-events: none;
 }
 
 .hero__canvas {
@@ -623,44 +707,73 @@ strong {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 0;
+    z-index: 1;
 }
 
 .hero__content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .hero__greeting {
     font-family: var(--font-mono);
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: var(--accent-color);
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-md);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
 }
 
 .hero__name {
-    font-size: clamp(2.8rem, 8vw, 5.5rem);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    margin-bottom: var(--space-sm);
-    color: var(--text-primary);
+    font-size: clamp(3.5rem, 9vw, 6.8rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin-bottom: var(--space-md);
+    background: linear-gradient(110deg, var(--text-primary) 30%, var(--accent-color) 50%, var(--text-primary) 70%);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textShine 4s linear infinite;
+}
+
+@keyframes textShine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.hero__name .accent {
+    -webkit-text-fill-color: #FF4D5A;
+    /* Coral Red for contrast */
 }
 
 .hero__tagline {
-    font-size: clamp(1.4rem, 4vw, 3rem);
+    font-size: clamp(1.6rem, 4vw, 3rem);
     font-weight: 700;
-    color: var(--text-secondary);
-    line-height: 1.2;
+    line-height: 1.3;
     margin-bottom: var(--space-lg);
+    background: linear-gradient(90deg, var(--text-secondary) 0%, #CBD5E1 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero__desc {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--text-secondary);
-    max-width: 540px;
-    line-height: 1.7;
+    max-width: 580px;
+    line-height: 1.8;
     margin-bottom: var(--space-lg);
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+.hero__desc strong {
+    color: var(--text-primary);
+    font-weight: 600;
 }
 
 .hero__cta {
@@ -928,109 +1041,103 @@ strong {
 }
 
 /* ============================================================
-   SKILLS GRID
+   SKILLS CATEGORIES & PILLS
    ============================================================ */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+.skills-container {
+    column-count: 2;
+    column-gap: 2rem;
+    width: 100%;
 }
 
 .skill-card {
     background: var(--bg-card);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    transition: all var(--dur-base) var(--ease-out);
-    position: relative;
-    overflow: visible;
-    /* Changed from hidden to avoid clipping */
-    height: 100%;
-    transform-style: preserve-3d;
-}
-
-.skill-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(125deg,
-            rgba(255, 255, 255, 0.1) 0%,
-            rgba(255, 255, 255, 0.05) 40%,
-            transparent 100%);
+    border-left: 4px solid var(--accent-color);
+    border-radius: 12px;
+    padding: 1.8rem;
+    box-shadow: var(--shadow-card);
+    transition: all 0.4s var(--ease-premium);
     opacity: 0;
-    transition: opacity 0.4s var(--ease-premium);
-    pointer-events: none;
-}
-
-.skill-card:hover::after {
-    opacity: 1;
-}
-
-.skill-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2px;
-    height: 100%;
-    background: var(--accent-color);
-    opacity: 0.6;
-    /* More visible accent */
+    transform: translateY(20px);
+    break-inside: avoid;
+    margin-bottom: 2rem;
+    display: inline-block;
+    width: 100%;
 }
 
 .skill-card:hover {
-    border-color: var(--accent-color);
-    box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
     transform: translateY(-5px);
+    box-shadow: var(--shadow-card-hover);
+    border-left-color: var(--accent-secondary);
 }
 
-.skill-card__label {
+.skill-category__label {
     font-size: 0.8rem;
     font-family: var(--font-mono);
     text-transform: uppercase;
     letter-spacing: 0.15em;
     color: var(--accent-color);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     font-weight: 600;
-    opacity: 0.8;
-}
-
-.skill-card__pills {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 0.75rem;
-    width: 100%;
-}
-
-.pill {
     display: flex;
     align-items: center;
-    font-size: 0.9rem;
-    font-family: var(--font-sans);
+    gap: 0.8rem;
+}
+
+.skill-category__label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border-color);
+}
+
+.skill-category__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+}
+
+.skill-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 100px;
+    font-size: 0.85rem;
     color: var(--text-secondary);
-    position: relative;
-    padding-left: 1.1rem;
-    line-height: 1.4;
-    transition: color var(--dur-fast), transform var(--dur-fast);
+    transition: all 0.3s var(--ease-premium);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
-.pill::before {
-    content: "▹";
-    position: absolute;
-    left: 0;
-    color: var(--accent-color);
-    font-size: 1.1rem;
-    line-height: 1;
+.skill-pill svg {
+    color: var(--text-muted);
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.pill:hover {
+.skill-pill:hover {
     color: var(--accent-color);
-    transform: translateX(4px);
+    border-color: var(--accent-color);
+    background: rgba(var(--accent-color-rgb), 0.05);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-pill-hover);
+}
+
+.skill-pill:hover svg {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+[data-theme="light"] .skill-pill {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(15, 23, 42, 0.1);
+    color: #475569;
+}
+
+[data-theme="light"] .skill-pill:hover {
+    background: #fff;
+    color: var(--accent-color);
 }
 
 /* ============================================================
@@ -1063,8 +1170,8 @@ strong {
     position: absolute;
     inset: 0;
     background: linear-gradient(125deg,
-            rgba(255, 255, 255, 0.1) 0%,
-            rgba(255, 255, 255, 0.05) 40%,
+            var(--project-glass-1) 0%,
+            var(--project-glass-2) 40%,
             transparent 100%);
     opacity: 0;
     transition: opacity 0.4s var(--ease-premium);
@@ -1252,8 +1359,8 @@ strong {
         grid-template-columns: 1fr;
     }
 
-    .skills-grid {
-        grid-template-columns: 1fr;
+    .skills-container {
+        column-count: 1;
     }
 }
 
@@ -1326,6 +1433,12 @@ strong {
 .reveal-up {
     opacity: 0;
     transform: translateY(30px);
+}
+
+/* CSS addition to hide preloader elements initially for JS intro */
+.preloader-inner span,
+.preloader-line {
+    opacity: 0;
 }
 
 /* End of premium styles cleanup */
