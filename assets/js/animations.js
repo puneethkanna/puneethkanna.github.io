@@ -512,14 +512,41 @@ function initLogoHacker() {
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
 
-        // CONFIGURABLE LABELS - ADD ANY NAME HERE
-        const nodeLabels = [
-            "Kafka", "Reactive", "Spring Boot", "JDK 21",
-            "Publisher", "Consumer", "PostgreSQL", "Docker",
-            "Kubernetes", "WebFlux", "Event-Driven", "Microservices",
-            "Redis", "TMF Open API", "API Gateway", "OAuth2",
-            "CI/CD", "AWS", "gRPC"
+        // CONFIGURABLE TECH NODES — label + Devicon SVG URL
+        // url: null → falls back to text rendering
+        const CDN = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons';
+        const techNodes = [
+            { label: 'Java', url: `${CDN}/java/java-original.svg` },
+            { label: 'Spring Boot', url: `${CDN}/spring/spring-original.svg` },
+            { label: 'Kafka', url: `${CDN}/apachekafka/apachekafka-original.svg` },
+            { label: 'PostgreSQL', url: `${CDN}/postgresql/postgresql-original.svg` },
+            { label: 'Docker', url: `${CDN}/docker/docker-original.svg` },
+            { label: 'Kubernetes', url: `${CDN}/kubernetes/kubernetes-plain.svg` },
+            { label: 'Redis', url: `${CDN}/redis/redis-original.svg` },
+            { label: 'AWS', url: `${CDN}/amazonwebservices/amazonwebservices-plain-wordmark.svg` },
+            { label: 'Git', url: `${CDN}/git/git-original.svg` },
+            { label: 'Linux', url: `${CDN}/linux/linux-original.svg` },
+            { label: 'Jenkins', url: `${CDN}/jenkins/jenkins-original.svg` },
+            { label: 'MongoDB', url: `${CDN}/mongodb/mongodb-original.svg` },
+            { label: 'Postman', url: `${CDN}/postman/postman-original.svg` },
+            { label: 'Hibernate', url: `${CDN}/hibernate/hibernate-original.svg` },
+            { label: 'Keycloak', url: `https://svgl.app/library/keycloak.svg` },
+            { label: 'WebFlux', url: `${CDN}/spring/spring-original.svg` },
+            { label: 'Microservices', url: null },
+            { label: 'OAuth2', url: null },
+            { label: 'gRPC', url: null },
         ];
+        // Pre-attach Image objects for canvas rendering
+        techNodes.forEach(node => {
+            if (node.url) {
+                const img = new Image();
+                img.crossOrigin = 'anonymous';
+                img.src = node.url;
+                node.img = img;
+            } else {
+                node.img = null;
+            }
+        });
 
         let width, height;
         let animationFrameId;
@@ -534,9 +561,12 @@ function initLogoHacker() {
         class Particle {
             constructor(index) {
                 this.index = index;
-                this.label = (index < nodeLabels.length) ? nodeLabels[index] : null;
+                this.techNode = (index < techNodes.length) ? techNodes[index] : null;
+                this.label = this.techNode ? this.techNode.label : null;
                 if (!this.label && Math.random() < 0.1) {
-                    this.label = nodeLabels[Math.floor(Math.random() * nodeLabels.length)];
+                    const rnd = techNodes[Math.floor(Math.random() * techNodes.length)];
+                    this.techNode = rnd;
+                    this.label = rnd.label;
                 }
                 this.reset();
             }
@@ -645,12 +675,30 @@ function initLogoHacker() {
                 ctx.fillStyle = `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, ${pulseAlpha})`;
                 ctx.fill();
 
-                // Label text
+                // Theme-tinted logo icon (Material You / Pixel Launcher approach)
+                // Each icon inherits its parent particle's exact theme color
                 if (this.label && pulseAlpha > 0.15) {
-                    const fontSize = Math.max(10, pulseRadius * 2 + 6);
-                    ctx.font = `600 ${fontSize}px 'Inter', sans-serif`;
-                    ctx.fillStyle = `rgba(226, 232, 240, ${pulseAlpha * 0.95})`;
-                    ctx.fillText(this.label, this.pos.x + pulseRadius + 8, drawY + 4);
+                    const tn = this.techNode;
+                    if (tn && tn.img && tn.img.complete && tn.img.naturalWidth > 0) {
+                        const iconSize = 26;
+                        const iconX = this.pos.x + pulseRadius + 8;
+                        const iconY = drawY - iconSize / 2;
+
+                        // Detect which theme accent this particle uses
+                        // cyan  → { r:77,  g:214, b:229 } → hue ≈185° → sepia base(35°) + rotate(150°)
+                        // coral → { r:255, g:77,  b:90  } → hue ≈355° → sepia base(35°) + rotate(320°)
+                        const isCyan = this.color.b > this.color.r;
+                        const themeFilter = isCyan
+                            ? 'grayscale(1) sepia(1) saturate(4) hue-rotate(150deg) brightness(1.15)'
+                            : 'grayscale(1) sepia(1) saturate(3) hue-rotate(320deg) brightness(1.05)';
+
+                        ctx.save();
+                        ctx.globalAlpha = pulseAlpha * 0.85;
+                        ctx.filter = themeFilter;
+                        ctx.drawImage(tn.img, iconX, iconY, iconSize, iconSize);
+                        ctx.filter = 'none';
+                        ctx.restore();
+                    }
                 }
             }
         }
