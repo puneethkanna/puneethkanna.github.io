@@ -35,13 +35,12 @@ function initAllAnimations() {
         if (window.startChronosphere) window.startChronosphere();
         initScrollReveals();
         initHeroParallax();
+        initFlashlight();
         initCursorFollower();
         initExperienceTimeline();
         initSkillsAnimation();
         initCardInteractivity();
         initLogoHacker();
-        initMagneticButtons();
-
         // Refresh ScrollTrigger to ensure all positions are calculated correctly
         ScrollTrigger.refresh();
 
@@ -183,8 +182,6 @@ function initScrollReveals() {
     gsap.from('.project-card', {
         opacity: 0,
         y: 60,
-        scale: 0.95,
-        rotationX: -5,
         duration: 1.2,
         ease: 'expo.out',
         stagger: 0.15,
@@ -217,6 +214,23 @@ function initHeroParallax() {
             start: 'top top',
             end: 'bottom top',
             scrub: true
+        }
+    });
+}
+
+/**
+ * --- Ambient Flashlight Fade ---
+ */
+function initFlashlight() {
+    gsap.to('.brittany-flashlight', {
+        opacity: 1, // Full opacity is handled in CSS logic now, this just makes it active
+        scrollTrigger: {
+            trigger: '#about', // Start revealing outside of hero
+            start: 'top 85%',
+            end: 'top 30%',
+            scrub: true,
+            onEnter: () => document.body.classList.add('is-scrolled'),
+            onLeaveBack: () => document.body.classList.remove('is-scrolled')
         }
     });
 }
@@ -314,6 +328,17 @@ function initCardInteractivity() {
     const cards = gsap.utils.toArray('.skill-card, .project-card');
 
     cards.forEach(card => {
+        // Force flat initial state to prevent scroll-reveal tilt from sticking
+        gsap.set(card, { rotateX: 0, rotateY: 0, z: 0, scale: 1 });
+
+        // Create an inner glow element if it's a project card
+        let glare = card.querySelector('.project-card-glare');
+        if (!glare && card.classList.contains('project-card')) {
+            glare = document.createElement('div');
+            glare.className = 'project-card-glare';
+            card.appendChild(glare);
+        }
+
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -322,99 +347,55 @@ function initCardInteractivity() {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
 
-            const rotateX = ((y - centerY) / centerY) * -5; // Small tilt
-            const rotateY = ((x - centerX) / centerX) * 5;
-            const skewX = ((x - centerX) / centerX) * -2; // Subtle skew
+            // Dynamic rotation mapping (Boosted for better visibility)
+            const rotateX = ((y - centerY) / centerY) * -6;
+            const rotateY = ((x - centerX) / centerX) * 6;
 
+            // Apply 3D transform with depth and slight scale
             gsap.to(card, {
                 rotateX: rotateX,
                 rotateY: rotateY,
-                skewX: skewX,
-                duration: 0.5,
+                z: 10,
+                scale: 1.03,
+                duration: 0.3,
                 ease: 'power2.out',
                 overwrite: 'auto'
             });
+
+            // Move the glare based on mouse position
+            if (glare) {
+                const moveX = (x / rect.width) * 100;
+                const moveY = (y / rect.height) * 100;
+                gsap.to(glare, {
+                    background: `radial-gradient(circle at ${moveX}% ${moveY}%, rgba(255,255,255,0.12) 0%, transparent 60%)`,
+                    duration: 0.2
+                });
+            }
         });
 
         card.addEventListener('mouseleave', () => {
             gsap.to(card, {
                 rotateX: 0,
                 rotateY: 0,
-                skewX: 0,
+                z: 0,
+                scale: 1,
                 duration: 0.8,
-                ease: 'elastic.out(1, 0.5)',
+                ease: 'elastic.out(1, 0.6)',
                 overwrite: 'auto'
             });
+
+            if (glare) {
+                gsap.to(glare, {
+                    background: `radial-gradient(circle at 50% 50%, rgba(255,255,255,0) 0%, transparent 60%)`,
+                    duration: 0.5
+                });
+            }
         });
     });
 }
 
-/**
- * --- Cuberto × Satya Pro: Magnetic Liquid Buttons ---
- * Implements smooth magnetic movement and precise radial fill tracking.
- */
-function initMagneticButtons() {
-    const magnets = document.querySelectorAll('.btn-magnetic');
 
-    magnets.forEach(magnet => {
-        const btn = magnet.querySelector('.btn');
 
-        const fill = btn ? btn.querySelector('.btn__fill') : null;
-
-        magnet.addEventListener('mouseenter', (e) => {
-            const rect = magnet.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            if (fill) {
-                gsap.killTweensOf(fill);
-                // 1. Instantly move to cursor entry point with zero scale
-                gsap.set(fill, { top: y, left: x, xPercent: -50, yPercent: -50, scale: 0 });
-                // 2. Animate out beautifully over 0.6s using power3
-                gsap.to(fill, { scale: 1, duration: 0.6, ease: 'power3.out' });
-            }
-        });
-
-        magnet.addEventListener('mousemove', (e) => {
-            const rect = magnet.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            const deltaX = (x - centerX) * 0.4; // Slightly more magnetic
-            const deltaY = (y - centerY) * 0.4;
-
-            gsap.to(btn, {
-                x: deltaX,
-                y: deltaY,
-                duration: 0.3,
-                ease: 'power2.out'
-            });
-        });
-
-        magnet.addEventListener('mouseleave', (e) => {
-            const rect = magnet.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            if (fill) {
-                gsap.killTweensOf(fill);
-                // 3. The Cuberto Magic: Instead of shrinking to the center, 
-                // we animate the top/left to follow the cursor OUT while scaling down.
-                gsap.to(fill, { top: y, left: x, scale: 0, duration: 0.6, ease: 'power3.out' });
-            }
-
-            gsap.to(btn, {
-                x: 0,
-                y: 0,
-                duration: 0.5,
-                ease: 'elastic.out(1, 0.3)'
-            });
-        });
-    });
-}
 
 /**
  * --- Custom Mouse Follower (Cuberto-inspired) ---
@@ -425,33 +406,50 @@ function initCursorFollower() {
 
     let posX = 0, posY = 0;
     let mouseX = 0, mouseY = 0;
-
     const lerp = (start, end, amt) => (1 - amt) * start + amt * end;
+    let stickyElement = null;
 
     window.addEventListener('mousemove', e => {
         mouseX = e.clientX;
         mouseY = e.clientY;
+
+        // Expose mouse variables for the Brittany Chiang flashlight effect
+        document.documentElement.style.setProperty('--mouse-x', `${mouseX}px`);
+        document.documentElement.style.setProperty('--mouse-y', `${mouseY}px`);
     });
 
     gsap.ticker.add(() => {
-        posX = lerp(posX, mouseX, 0.15);
-        posY = lerp(posY, mouseY, 0.15);
+        let tx = mouseX;
+        let ty = mouseY;
+
+        // Sticky Snapping Logic
+        if (stickyElement) {
+            const rect = stickyElement.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            // Follower snaps 65% towards the center of the element, but still follows mouse inertia
+            tx = centerX + (mouseX - centerX) * 0.35;
+            ty = centerY + (mouseY - centerY) * 0.35;
+        }
+
+        posX = lerp(posX, tx, 0.15);
+        posY = lerp(posY, ty, 0.15);
+
         gsap.set(follower, {
             x: posX - (follower.offsetWidth / 2),
             y: posY - (follower.offsetHeight / 2)
         });
     });
 
-    const interactive = document.querySelectorAll('a, button, .btn-magnetic, .nav__brand');
+    const interactive = document.querySelectorAll('a, button, .nav__brand');
     interactive.forEach(el => {
         el.addEventListener('mouseenter', () => {
             follower.classList.add('is-hovering');
-            if (el.classList.contains('btn-magnetic')) {
-                gsap.to(follower, { scale: 0.5, opacity: 0.2, duration: 0.3 });
-            }
         });
         el.addEventListener('mouseleave', () => {
             follower.classList.remove('is-hovering');
+            stickyElement = null; // Deactivate stickiness
             gsap.to(follower, { scale: 1, opacity: 1, duration: 0.3 });
         });
     });
@@ -516,20 +514,20 @@ function initLogoHacker() {
         // url: null → falls back to text rendering
         const CDN = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons';
         const techNodes = [
-            { label: 'Java', url: `${CDN}/java/java-original.svg` },
+            { label: 'Java', url: `${CDN}/java/java-plain.svg` },
             { label: 'Spring Boot', url: `${CDN}/spring/spring-original.svg` },
             { label: 'Kafka', url: `${CDN}/apachekafka/apachekafka-original.svg` },
-            { label: 'PostgreSQL', url: `${CDN}/postgresql/postgresql-original.svg` },
-            { label: 'Docker', url: `${CDN}/docker/docker-original.svg` },
+            { label: 'PostgreSQL', url: `${CDN}/postgresql/postgresql-plain.svg` },
+            { label: 'Docker', url: `${CDN}/docker/docker-plain.svg` },
             { label: 'Kubernetes', url: `${CDN}/kubernetes/kubernetes-plain.svg` },
-            { label: 'Redis', url: `${CDN}/redis/redis-original.svg` },
+            { label: 'Redis', url: `${CDN}/redis/redis-plain.svg` },
             { label: 'AWS', url: `${CDN}/amazonwebservices/amazonwebservices-plain-wordmark.svg` },
-            { label: 'Git', url: `${CDN}/git/git-original.svg` },
-            { label: 'Linux', url: `${CDN}/linux/linux-original.svg` },
-            { label: 'Jenkins', url: `${CDN}/jenkins/jenkins-original.svg` },
-            { label: 'MongoDB', url: `${CDN}/mongodb/mongodb-original.svg` },
-            { label: 'Postman', url: `${CDN}/postman/postman-original.svg` },
-            { label: 'Hibernate', url: `${CDN}/hibernate/hibernate-original.svg` },
+            { label: 'Git', url: `${CDN}/git/git-plain.svg` },
+            { label: 'Linux', url: `${CDN}/linux/linux-plain.svg` },
+            { label: 'Jenkins', url: `${CDN}/jenkins/jenkins-plain.svg` },
+            { label: 'MongoDB', url: `${CDN}/mongodb/mongodb-plain.svg` },
+            { label: 'Postman', url: `${CDN}/postman/postman-plain.svg` },
+            { label: 'Hibernate', url: `${CDN}/hibernate/hibernate-plain.svg` },
             { label: 'Keycloak', url: `https://svgl.app/library/keycloak.svg` },
             { label: 'WebFlux', url: `${CDN}/spring/spring-original.svg` },
             { label: 'Microservices', url: null },
@@ -598,9 +596,9 @@ function initLogoHacker() {
                 this.baseRadius = this.label ? Math.random() * 2 + 4 : Math.random() * 1.5 + 1.2;
                 this.radius = 0;
 
-                // Cyan and Coral palette
-                const isCyan = Math.random() > 0.35;
-                this.color = isCyan ? { r: 77, g: 214, b: 229 } : { r: 255, g: 77, b: 90 };
+                // Sky Blue and Indigo cool palette
+                const isSky = Math.random() > 0.3;
+                this.color = isSky ? { r: 56, g: 189, b: 248 } : { r: 129, g: 140, b: 248 };
 
                 this.alpha = 0;
                 this.pulseOffset = Math.random() * Math.PI * 2;  // Breathing phase offset
@@ -684,13 +682,14 @@ function initLogoHacker() {
                         const iconX = this.pos.x + pulseRadius + 8;
                         const iconY = drawY - iconSize / 2;
 
-                        // Detect which theme accent this particle uses
-                        // cyan  → { r:77,  g:214, b:229 } → hue ≈185° → sepia base(35°) + rotate(150°)
-                        // coral → { r:255, g:77,  b:90  } → hue ≈355° → sepia base(35°) + rotate(320°)
-                        const isCyan = this.color.b > this.color.r;
-                        const themeFilter = isCyan
-                            ? 'grayscale(1) sepia(1) saturate(4) hue-rotate(150deg) brightness(1.15)'
-                            : 'grayscale(1) sepia(1) saturate(3) hue-rotate(320deg) brightness(1.05)';
+                        // Filter for monochromatic pixel icons matching the theme
+                        // Base sepia hue ≈ 40-50°
+                        // Sky Blue destination ≈ 198° (rotate ≈ 150°)
+                        // Indigo destination ≈ 234° (rotate ≈ 185°)
+                        const isSky = this.color.r < 100; // Sky Blue has lower R than Indigo
+                        const themeFilter = isSky
+                            ? 'brightness(0) invert(1) sepia(100%) saturate(10000%) hue-rotate(150deg) brightness(1.2)'
+                            : 'brightness(0) invert(1) sepia(100%) saturate(10000%) hue-rotate(185deg) brightness(1.1)';
 
                         ctx.save();
                         ctx.globalAlpha = pulseAlpha * 0.85;

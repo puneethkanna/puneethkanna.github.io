@@ -3,11 +3,11 @@
    ============================================================ */
 :root {
     /* --- Identity Palette --- */
-    --color-java: #778DA9;
-    --color-reactive: #A9D6E5;
-    --color-security: #FF4D5A;
-    --color-devops: #F4A261;
-    --color-database: #E0E1DD;
+    --color-java: #64748B;
+    --color-reactive: #0EA5E9;
+    --color-security: #38BDF8;
+    --color-devops: #818CF8;
+    --color-database: #94A3B8;
 
     /* --- Dark Theme (default) --- */
     --bg-primary: #0a0f1c;
@@ -16,19 +16,21 @@
     --text-primary: #e2e8f0;
     --text-secondary: #94a3b8;
     --text-muted: #64748b;
-    --accent-color: #FF4D5A;
-    --accent-secondary: #F4A261;
+    --accent-color: #38BDF8;
+    /* Sky Blue */
+    --accent-secondary: #818CF8;
+    /* Indigo */
     --border-color: rgba(148, 163, 184, 0.12);
     --border-hover: rgba(148, 163, 184, 0.25);
     --nav-bg: rgba(10, 15, 28, 0.8);
-    --glow-color: rgba(255, 77, 90, 0.15);
+    --glow-color: rgba(56, 189, 248, 0.15);
     --code-bg: rgba(30, 41, 59, 0.7);
     --shadow-card: 0 10px 30px -15px rgba(2, 12, 27, 0.3);
     --shadow-card-hover: 0 20px 40px -20px rgba(2, 12, 27, 0.5);
     --shadow-pill-hover: 0 10px 20px -10px rgba(0, 0, 0, 0.2);
-    --accent-color-rgb: 255, 77, 90;
-    --hero-glow-1: rgba(255, 77, 90, 0.08);
-    --hero-glow-2: rgba(77, 214, 229, 0.06);
+    --accent-color-rgb: 56, 189, 248;
+    --hero-glow-1: rgba(56, 189, 248, 0.08);
+    --hero-glow-2: rgba(129, 140, 248, 0.06);
     --project-glass-1: rgba(255, 255, 255, 0.1);
     --project-glass-2: rgba(255, 255, 255, 0.05);
 
@@ -68,8 +70,8 @@
     --text-primary: #0f172a;
     --text-secondary: #475569;
     --text-muted: #64748b;
-    --accent-color: #E63946;
-    --accent-secondary: #E09F3E;
+    --accent-color: #0284C7;
+    --accent-secondary: #4F46E5;
     --border-color: rgba(15, 23, 42, 0.08);
     --border-hover: rgba(15, 23, 42, 0.15);
     --nav-bg: rgba(248, 250, 252, 0.85);
@@ -78,17 +80,17 @@
     --shadow-card: 0 10px 30px -15px rgba(15, 23, 42, 0.08);
     --shadow-card-hover: 0 20px 40px -20px rgba(15, 23, 42, 0.15);
     --shadow-pill-hover: 0 10px 20px -10px rgba(15, 23, 42, 0.1);
-    --accent-color-rgb: 230, 57, 70;
+    --accent-color-rgb: 2, 132, 199;
     --hero-glow-1: rgba(230, 57, 70, 0.05);
     --hero-glow-2: rgba(65, 90, 119, 0.03);
     --project-glass-1: rgba(15, 23, 42, 0.03);
     --project-glass-2: rgba(15, 23, 42, 0.01);
 
-    --color-java: #1B263B;
-    --color-reactive: #415A77;
-    --color-security: #E63946;
-    --color-devops: #E09F3E;
-    --color-database: #415A77;
+    --color-java: #1E293B;
+    --color-reactive: #0284C7;
+    --color-security: #0EA5E9;
+    --color-devops: #4F46E5;
+    --color-database: #475569;
 }
 
 /* ============================================================
@@ -247,6 +249,13 @@ strong {
     opacity: 0.08;
 }
 
+/* Hide the background gradient meshes when scrolled past hero section */
+body.is-scrolled .radiant-bg::before,
+body.is-scrolled .radiant-bg::after {
+    opacity: 0 !important;
+    animation-play-state: paused;
+}
+
 @keyframes mesh-rotate {
     0% {
         transform: rotate(0deg) scale(1.1);
@@ -261,6 +270,34 @@ strong {
     }
 }
 
+/* ============================================================
+   INTERACTIVE SPOTLIGHT OVERLAY (Brittany Chiang Style)
+   ============================================================ */
+.brittany-flashlight {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    /* Fully hidden in Hero Section */
+    transition: opacity 0.5s ease;
+
+    /* Radial gradient follows --mouse-x/y set by JS */
+    /* Light blue glow (29, 78, 216 is royal/indigo blue) */
+    background: radial-gradient(600px circle at var(--mouse-x, 50vw) var(--mouse-y, 50vh),
+            rgba(29, 78, 216, 0.15),
+            transparent 80%);
+}
+
+body.is-scrolled .brittany-flashlight {
+    opacity: 1 !important;
+}
+
+[data-theme="light"] .brittany-flashlight {
+    background: radial-gradient(600px circle at var(--mouse-x, 50vw) var(--mouse-y, 50vh),
+            rgba(14, 165, 233, 0.12),
+            transparent 80%);
+}
 
 /* ============================================================
    LAYOUT
@@ -441,102 +478,6 @@ strong {
     font-size: 0.85em;
     color: var(--accent-color);
     font-weight: 500;
-}
-
-/* ============================================================
-   BUTTONS — Exact Cuberto DNA
-   ============================================================ */
-.btn-magnetic {
-    display: inline-flex;
-    position: relative;
-    z-index: 10;
-}
-
-.btn {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-    padding: 1.4rem 2.8rem;
-    /* Large, airy padding */
-    border-radius: 1000px;
-    /* Perfect pill shape */
-    font-weight: 500;
-    font-size: 1.1rem;
-    font-family: var(--font-sans);
-    cursor: pointer;
-    border: 1px solid var(--accent-color);
-    /* Solid, crisp border */
-    background: transparent;
-    color: var(--accent-color);
-    white-space: nowrap;
-    overflow: hidden;
-    isolation: isolate;
-    text-decoration: none;
-    text-transform: none;
-    /* Sentence case as per Cuberto */
-    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1),
-        border-color 0.8s cubic-bezier(0.19, 1, 0.22, 1),
-        color 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.btn--primary {
-    background: var(--accent-color);
-    color: #fff;
-    border-color: var(--accent-color);
-}
-
-.btn--outline {
-    background: transparent;
-}
-
-.btn--sm {
-    padding: 0.8rem 1.8rem;
-    font-size: 0.95rem;
-}
-
-.btn--lg {
-    padding: 1.6rem 3.2rem;
-    font-size: 1.2rem;
-}
-
-.btn:hover {
-    box-shadow: 0 0 30px var(--glow-color);
-    color: #fff;
-    /* Removed heavy translate/skew that caused 'very large' look */
-}
-
-/* Cuberto Liquid Fill Expansion (GSAP Controlled) */
-.btn__fill {
-    position: absolute;
-    width: 250%;
-    aspect-ratio: 1 / 1;
-    background: var(--accent-color);
-    border-radius: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    z-index: -1;
-    pointer-events: none;
-}
-
-/* Base specific color states handled by GSAP implicitly for background */
-.btn--primary .btn__fill {
-    background: #fff;
-}
-
-
-.btn:hover {
-    color: #fff;
-    border-color: var(--accent-color);
-}
-
-.btn--primary:hover {
-    color: var(--accent-color);
-    /* Reveal accent on primary expansion */
-}
-
-.btn:hover span {
-    color: inherit;
 }
 
 
@@ -746,8 +687,7 @@ strong {
 }
 
 .hero__name .accent {
-    -webkit-text-fill-color: #FF4D5A;
-    /* Coral Red for contrast */
+    -webkit-text-fill-color: var(--accent-color);
 }
 
 .hero__tagline {
@@ -789,7 +729,13 @@ strong {
     bottom: 2.5rem;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1;
+    z-index: 10;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.hero__scroll-hint:hover {
+    transform: translateX(-50%) translateY(5px);
 }
 
 .hero__scroll-mouse {
@@ -1047,6 +993,7 @@ strong {
     column-count: 2;
     column-gap: 2rem;
     width: 100%;
+    perspective: 1200px;
 }
 
 .skill-card {
@@ -1055,13 +1002,14 @@ strong {
     border-radius: 12px;
     padding: 1.8rem;
     box-shadow: var(--shadow-card);
-    transition: all 0.4s var(--ease-premium);
+    transition: box-shadow 0.4s var(--ease-premium), border-color 0.4s var(--ease-premium), opacity 0.4s var(--ease-premium);
     opacity: 0;
     transform: translateY(20px);
     break-inside: avoid;
     margin-bottom: 2rem;
     display: inline-block;
     width: 100%;
+    transform-style: preserve-3d;
 }
 
 .skill-card:hover {
@@ -1147,6 +1095,7 @@ strong {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: var(--space-lg);
+    perspective: 1200px;
 }
 
 .project-card {
@@ -1159,8 +1108,7 @@ strong {
     display: flex;
     flex-direction: column;
     transition: border-color var(--dur-base) var(--ease-out),
-        box-shadow var(--dur-base) var(--ease-out),
-        transform var(--dur-base) var(--ease-out);
+        box-shadow var(--dur-base) var(--ease-out);
     cursor: default;
     transform-style: preserve-3d;
 }
@@ -1180,6 +1128,16 @@ strong {
 
 .project-card:hover::after {
     opacity: 1;
+}
+
+.project-card-glare {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    border-radius: inherit;
+    mix-blend-mode: soft-light;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0) 0%, transparent 60%);
 }
 
 .project-card:hover {
@@ -1384,11 +1342,6 @@ strong {
     .hero__cta {
         flex-direction: column;
         align-items: stretch;
-    }
-
-    .hero__cta .btn {
-        justify-content: center;
-        text-align: center;
     }
 
     .about__skills-grid {

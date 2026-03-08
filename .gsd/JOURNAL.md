@@ -107,3 +107,85 @@ Update UI/UX generation to provide theme/background overhauls that strictly pres
 
 ### Handoff Notes
 - User has 3 new fresh, extremely grounded aesthetic choices for colors. Wait for their selection (1, 2, or 3) and then rewrite the CSS Custom Properties and variables in `assets/css/main.css`.
+
+---
+
+## Session: 2026-03-07 18:06 IST
+
+### Objective
+Transition hero mesh background icons to a monochromatic, "Pixel-like" themed style matching the current accent palette.
+
+### Accomplished
+- **Verified Plain Icons** — Researched Devicon and switched 10 tech nodes to their `-plain` silhouette variants to reduce multi-color clutter.
+- **Brittany Chiang Flashlight Background** — Ditched the static texture for a highly polished, interactive radial gradient. Using a combination of `window.addEventListener('mousemove')` and `--mouse-x/y` CSS variables, a soft Indigo/Royal Blue spotlight tracks the cursor exactly like the Brittany Chiang portfolio.
+- **Isolating the Hero Animation** — Restructured `.radiant-bg` to smoothly fade `opacity: 0` as the user moves into the 'About Me' section, leaving a clean, distraction-free slate for the flashlight background.
+- **Fixed Card Initialization Angle** — Resolved a bug where featured work cards were tilted by default. Cleaned up `gsap.from` reveals by removing `rotationX: -5`, and added a forced `gsap.set` reset inside the interactivity loop to ensure cards start perfectly flat. Also removed `transition: transform` from CSS to avoid conflicts with GSAP's 3D engine.
+- **Fixed Cursor & Flashlight Fixed Position** — Corrected a core CSS conflict where a global `perspective: 1200px` on the `html` element was breaking the `position: fixed` behavior of the custom cursor and background spotlight. Removing this global property restored correct viewport-tracking across the entire scroll.
+- **Pure Cuberto Button Re-implementation** — Following a strict 4-step process, I removed all previous button logic to start fresh. I then implemented a "Liquid Fill" that tracks mouse entry/exit points and a "Unified Magnetic" effect where the entire button container tracks the cursor while internal text remains stable. Verified with browser subagent screenshots.
+- **Button Z-Index Fix** — Resolved an issue where the "Explore my work" button text was being obscured by the liquid fill animation.
+- **Functional Scroll Hint** — Converted the hero scroll hint (mouse icon) from a static `div` to a functional `<a>` link.
+
+### Verification
+- [x] TechNode URLs updated to `-plain` where possible.
+- [x] Filter logic ensures zero "original" colors are visible.
+- [x] All background icons strictly follow the particle's accent color (monochromatic).
+- [x] Card 360° tilt and glare verified via browser automation.
+
+### Paused Because
+- User requested a session pause using `/pause`.
+
+### Handoff Notes
+- The hero mesh background is now visually aligned with the "Pixel themed icon" request.
+- Awaiting user input on the 3 color themes provided in the previous sessions.
+- Once a theme is picked, the next step is to update `assets/css/main.css` to roll it out globally.
+
+---
+
+## Session: 2026-03-08 20:13 IST
+
+### Objective
+Implement a flawless 1:1 Cuberto-style button animation after previous attempts resulted in text parallax glitches.
+
+### Accomplished
+- **Clean Slate Protocol** — Deleted all legacy button CSS (padding, colors, magnetic wrappers) and JS logic.
+- **Pure HTML Structure** — Stripped nested `.btn-magnetic` div wrappers from HTML, replacing them with a single functional `<a class="cb-btn">` anchor.
+- **Liquid Fill Mechanics** — Swapped GSAP literal transform controls for native CSS var routing (`--x`, `--y`), resulting in a perfect origin-based bubble fill/retreat.
+- **Unified Magnetic Physics** — Hooked up GSAP `elastic.out` translations solely to the parent button, ensuring the internal elements stay anchored without floating out of phase, matching Cuberto's precise feel.
+
+### Verification
+- [x] Zero CSS animation conflicts.
+- [x] Mouse enter strictly dictates the origin of the liquid background via CSS injection.
+- [x] Entire button tracking tracks the mouse magnetically.
+- [x] Custom cursor stickiness cleanly decoupled from the new button logic.
+
+### Paused Because
+User requested a manual `/pause` to lock in the work.
+
+### Handoff Notes
+- The Cuberto button logic is highly refined and sits cleanly inside `initCubertoButtons()`.
+- Wait for user feedback on the button feel. If they approve, proceed to the requested visual refinements or color palette shifts.
+
+---
+
+## Session: 2026-03-08 20:56 IST
+
+### Objective
+Perfect the Cuberto button animation by removing GSAP physics entirely and recreating the subtle "What We Do" button purely with CSS.
+
+### Accomplished
+- **Removed GSAP Dependencies for Buttons** — Deleted JS-based calculations, tracking, and the custom `portfolio-btn.js` wrapper.
+- **Pure CSS Bottom-Up Fill** — Implemented `.portfolio-btn-fill` with `border-radius: 50% 50% 0 0` that simply translates up on hover like a liquid filling a glass.
+- **Subtle Magnification** — Added a simple `transform: scale(1.05)` on hover, matching the strict and static nature of Cuberto's "What We Do" button without erratic mouse tracking.
+- **Decoupled Button Code** — The button logic now lives entirely cleanly inside `assets/css/portfolio-btn.css`, completely disconnected from the rest of the site animations.
+
+### Verification
+- [x] Zero JS physics driving the buttons.
+- [x] Buttons stay completely physically static (no magnetic tracking).
+- [x] Background smoothly fills from the bottom up on hover.
+
+### Paused Because
+- User requested a `/pause` using the GSD workflow to lock in the pure CSS static button implementation context.
+
+### Handoff Notes
+- The button implementation (`portfolio-btn.css`) is final regarding the static liquid fill and should NOT have mouse tracking added back.
+- When resuming, verify if the user is happy with this final button feel and what components should be overhauled next.

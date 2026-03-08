@@ -35,6 +35,7 @@
 
   <!-- CSS -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/portfolio-btn.css" rel="stylesheet">
 
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
@@ -47,6 +48,7 @@
        RADIANT BLUR BACKGROUND
        ═══════════════════════════════════════════════ -->
   <div class="radiant-bg" aria-hidden="true"></div>
+  <div class="brittany-flashlight" aria-hidden="true"></div>
   <div class="cursor-follower" id="cursor-follower"></div>
 
   <!-- ═══════════════════════════════════════════════
@@ -79,40 +81,40 @@
         <li><a href="#contact" class="nav__link" data-section="contact">Contact</a></li>
       </ul>
 
-      <div class="nav__actions">
+      <!-- <div class="nav__actions">
         <div class="btn-magnetic">
           <a href="assets/PuneethResume_Final.pdf" target="_blank" class="btn btn--outline btn--sm"
             aria-label="View Resume PDF">
             <span class="btn__fill"></span>
             <span>Resume</span>
           </a>
-        </div>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Light/Dark Theme">
-          <!-- Sun icon (shown in dark mode) -->
-          <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5" />
-            <line x1="12" y1="1" x2="12" y2="3" />
-            <line x1="12" y1="21" x2="12" y2="23" />
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-            <line x1="1" y1="12" x2="3" y2="12" />
-            <line x1="21" y1="12" x2="23" y2="12" />
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-          </svg>
-          <!-- Moon icon (shown in light mode) -->
-          <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-          </svg>
-        </button>
-        <button id="hamburger" class="hamburger" aria-label="Toggle Menu" aria-expanded="false">
-          <span class="hamburger__line"></span>
-          <span class="hamburger__line"></span>
-          <span class="hamburger__line"></span>
-        </button>
-      </div>
+        </div> -->
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Light/Dark Theme">
+        <!-- Sun icon (shown in dark mode) -->
+        <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <!-- Moon icon (shown in light mode) -->
+        <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+        </svg>
+      </button>
+      <button id="hamburger" class="hamburger" aria-label="Toggle Menu" aria-expanded="false">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </div>
     </div>
   </nav>
 
@@ -127,10 +129,10 @@
       <li><a href="#projects" class="mobile-menu__link">Projects</a></li>
       <li><a href="#contact" class="mobile-menu__link">Contact</a></li>
     </ul>
-    <div class="btn-magnetic">
-      <a href="assets/PuneethResume_Final.pdf" target="_blank" class="btn btn--primary btn--lg mobile-menu__resume">
-        <span class="btn__fill"></span>
-        <span>Download resume</span>
+    <div class="portfolio-btn-wrap">
+      <a href="assets/PuneethResume_Final.pdf" target="_blank" class="portfolio-btn mobile-menu__resume">
+        <span class="portfolio-btn-fill"></span>
+        <span class="portfolio-btn-text">Download resume</span>
       </a>
     </div>
   </div>
@@ -142,7 +144,7 @@
     <header id="hero" class="hero section">
       <canvas id="hero-canvas" class="hero__canvas" aria-hidden="true"></canvas>
       <div class="container hero__content">
-        <p class="hero__greeting reveal-text">Hi, my name is</p>
+        <!-- <p class="hero__greeting reveal-text">Hi, my name is</p> -->
         <h1 class="hero__name reveal-text">Puneeth<span class="accent">.</span></h1>
         <h2 class="hero__tagline reveal-text">I build scalable enterprise systems.</h2>
         <p class="hero__desc reveal-text">
@@ -150,29 +152,29 @@
           designing event-driven enterprise platforms using Java, Spring Boot, and Spring WebFlux.
         </p>
         <div class="hero__cta reveal-text">
-          <div class="btn-magnetic">
-            <a href="#about" class="btn btn--primary">
-              <span class="btn__fill"></span>
-              <span>Explore my work</span>
+          <div class="portfolio-btn-wrap">
+            <a href="#about" class="portfolio-btn">
+              <span class="portfolio-btn-fill"></span>
+              <span class="portfolio-btn-text">Explore my work</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="12" y1="5" x2="12" y2="19" />
                 <polyline points="19 12 12 19 5 12" />
               </svg>
             </a>
           </div>
-          <div class="btn-magnetic">
-            <a href="assets/PuneethResume_Final.pdf" target="_blank" class="btn btn--outline">
-              <span class="btn__fill"></span>
-              <span>Download resume</span>
+          <div class="portfolio-btn-wrap">
+            <a href="assets/PuneethResume_Final.pdf" target="_blank" class="portfolio-btn btn--outline">
+              <span class="portfolio-btn-fill"></span>
+              <span class="portfolio-btn-text">Download resume</span>
             </a>
           </div>
         </div>
       </div>
-      <div class="hero__scroll-hint" aria-hidden="true">
+      <a href="#about" class="hero__scroll-hint" aria-label="Scroll to About section">
         <div class="hero__scroll-mouse">
           <div class="hero__scroll-dot"></div>
         </div>
-      </div>
+      </a>
     </header>
 
     <!-- ═══════════════════════════════════════════════
@@ -614,10 +616,10 @@
         <h2 class="contact__title">Get In Touch</h2>
         <p class="contact__desc">I'm currently looking for new opportunities and my inbox is always open. Whether you
           have a question or just want to say hi, I'll try my best to get back to you!</p>
-        <div class="btn-magnetic">
-          <a href="mailto:neerukondapuneeth@gmail.com" class="btn btn--primary btn--lg contact__cta">
-            <span class="btn__fill"></span>
-            <span>Say hello</span>
+        <div class="portfolio-btn-wrap">
+          <a href="mailto:neerukondapuneeth@gmail.com" class="portfolio-btn contact__cta">
+            <span class="portfolio-btn-fill"></span>
+            <span class="portfolio-btn-text">Say hello</span>
           </a>
         </div>
       </div>

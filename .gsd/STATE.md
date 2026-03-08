@@ -1,33 +1,38 @@
 # GSD State — Puneeth Portfolio
 
 ## Current Position
-- **Phase**: UI Design Refresh — Rest of Portfolio
-- **Task**: Re-evaluating UI/UX colors with existing layout.
-- **Status**: Paused at 2026-03-07 13:38 IST
+- **Phase**: UI Design Refresh — Components
+- **Task**: Completed static CSS-only Cuberto button ("What We Do" style)
+- **Status**: Paused at 2026-03-08 20:56 IST
 
 ## Last Session Summary
-We tried 3 fresh UI layout ideas (Neon Glass, Bento, Cosmic), but the user preferred keeping the exact current HTML layout structure and solely updating the CSS theme colors/backgrounds. In response, generated 3 premium color palette/theming mockups focused on high-end SaaS presentation.
-
-### Completed This Session
-- **UI/UX Options generated (Round 2)** — Created robust color palettes: Slate & Sapphire, Monochrome Minimal, Forest Shadows.
-- Options documented in `fresh_premium_overhauls.md` and visually provided below `generate_image`.
+Re-engineered the Cuberto button animation to exactly match the "What We Do" button on their reference site. All GSAP and JavaScript magnetic mouse-tracking mechanics were entirely deleted. The button now relies on 100% pure CSS, featuring a subtle `scale(1.05)` magnification on hover and a smooth bottom-to-top fluid fill (`transform: translateY(0)` with a flattening border-radius).
 
 ## In-Progress Work
-- User is reviewing the 3 premium color palettes/themes.
+- Ready to move forward with the next UI component or overarching theme design.
+- Files modified: `assets/css/portfolio-btn.css`, `index.html`. Removed `assets/js/portfolio-btn.js`.
+- Tests status: Verified button remains completely stationary while filling visually.
 
 ## Blockers
-- Awaiting user decision on the final color/background direction.
+- None.
 
 ## Context Dump
-
 ### Decisions Made
-- Layout must NOT change (timeline remains, grids remain).
-- Focus is entirely on premium styling via CSS (background textures/colors, card shading, border refinements, clean typography).
+- Scrapped all JS physics for the buttons entirely.
+- Decided to use pure CSS to recreate the static "liquid filling a glass" effect.
+- Created `assets/css/portfolio-btn.css` to store the isolated button mechanics to prevent global namespace collisions. 
+
+### Approaches Tried
+- Iteration 1 & 2: Tried building an aggressive magnetic hover effect with GSAP. It wobbled and sized improperly due to collisions.
+- Iteration 3: Built a highly refined subtle JS magnetic effect. User clarified they explicitly did *not* want the button to physically move.
+- Iteration 4 (Current): Tossed JS entirely. Built a pure visual CSS-only zoom and fluid-rise effect.
+
+### Current Hypothesis
+The pure CSS, stationary magnification approach perfectly replicates the explicit Cuberto "What We Do" reference button without stressing the browser or fighting with the site's other JS.
 
 ### Files of Interest
-- `assets/css/main.css`: Future target for the `--bg-*` and color token replacements based on user choice.
+- `assets/css/portfolio-btn.css`: Contains the final static liquid fill CSS logic.
 
 ## Next Steps
-1. Receive user's preferred layout color palette.
-2. Update the CSS Custom Properties in `assets/css/main.css` to roll out the new theme.
-3. Validate typography contrasts, hover states, and glow effects per the chosen aesthetic.
+1. Resume session.
+2. Confirm if the user is ready to move to the next section or if they want to apply global themes.
