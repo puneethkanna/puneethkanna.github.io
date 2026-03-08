@@ -1,0 +1,74 @@
+3️⃣ Skills
+🔹 Backend
+
+Java (JDK 17/20)
+
+Spring Boot
+
+Spring WebFlux (Reactive Programming)
+
+CriteriaBuilder & JPQL
+
+Virtual Threads
+
+Scheduler Implementation
+
+🔹 Architecture
+
+Microservices Architecture
+
+Event-Driven Architecture
+
+Kafka
+
+TMF Open APIs
+
+Multi-Tenant Design
+
+API Reusability Strategy
+
+Layered Security Architecture
+
+🔹 Security
+
+Keycloak (Organization-level authentication)
+
+Role-based access control (RBAC)
+
+Permission-level restrictions
+
+Token validation & enforcement
+
+🔹 Integration
+
+REST APIs
+
+SOAP Services
+
+ESB Systems
+
+PLM Integration
+
+Centralized Notification Systems
+
+🔹 Optimization
+
+Payload Compression
+
+Bulk Data Fetching
+
+Parallel Processing
+
+Performance Tuning
+
+Network Latency Reduction
+
+🔹 Dev & Governance
+
+MVP Planning & Delivery
+
+Agile/Sprint Development
+
+Microservices Governance Compliance
+
+API Design Review Participation

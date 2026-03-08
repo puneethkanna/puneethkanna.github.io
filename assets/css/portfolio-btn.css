@@ -1,0 +1,81 @@
+/* ============================================================
+   PORTFOLIO CUBERTO BUTTON (BOTTOM-UP FILL & MAGNIFY)
+   ============================================================ */
+.portfolio-btn-wrap {
+    display: inline-flex;
+    position: relative;
+    z-index: 10;
+}
+
+.portfolio-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 1.25rem 2.8rem;
+    border-radius: 100px;
+    border: 1px solid var(--accent-color);
+    background: transparent;
+    text-decoration: none;
+    overflow: hidden;
+    isolation: isolate;
+    -webkit-tap-highlight-color: transparent;
+    /* Smooth scale up */
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1), border-color 0.4s ease;
+    will-change: transform;
+}
+
+/* Magnify slightly on hover */
+.portfolio-btn:hover {
+    transform: scale(1.05);
+}
+
+.portfolio-btn.btn--outline {
+    border-color: var(--text-secondary);
+}
+
+.portfolio-btn:hover.btn--outline {
+    border-color: var(--accent-color);
+}
+
+/* The bottom-to-top fluid fill */
+.portfolio-btn-fill {
+    content: "";
+    position: absolute;
+    bottom: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background: var(--accent-color);
+    z-index: -1;
+    /* Create a curved top edge for that liquid feel */
+    border-radius: 50% 50% 0 0;
+    /* Hide below the button initially */
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1), border-radius 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    pointer-events: none;
+}
+
+/* On hover, slide up and flatten out the top edge */
+.portfolio-btn:hover .portfolio-btn-fill {
+    transform: translateY(0);
+    border-radius: 0;
+}
+
+.portfolio-btn-text,
+.portfolio-btn svg {
+    position: relative;
+    z-index: 2;
+    color: var(--accent-color);
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.4s ease;
+    pointer-events: none;
+    display: inline-block;
+}
+
+.portfolio-btn:hover .portfolio-btn-text,
+.portfolio-btn:hover svg {
+    color: #fff;
+}

@@ -1,704 +1,676 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
-
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="I am a student developer and an open-source developer and contributor." />
-  <meta name="author" content="puneeth">
-  <meta name="keywords" content="" />
-  <!--Facebook and maximum sites-->
-  <meta property="og:title" content="Neerukonda Puneeth | puneethkanna" />
-  <meta property="og:image" content="assets/images/previewf.jpg" />
-  <meta property="og:description" content="I am a student developer and an open-source developer and contributor" />
-  <meta property="og:url" content="http://puneethkanna.github.io" />
-  <meta property="og:type" content="portfolio" />
-  <!--Twitter-->
-  <meta property="twitter:title" content="Neerukonda Puneeth | puneethkanna" />
-  <meta property="twitter:image" content="assets/images/previewf.jpg" />
-  <meta property="twitter:description" content="I am a student developer and an open-source developer and contributor" />
-  <meta property="twitter:url" content="http://puneethkanna.github.io" />
-  <meta property="twitter:type" content="portfolio" />
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@puneeth_kanna" />
-  <meta name="twitter:creator" content="@puneeth_kanna" />
-  
-  <!-- Favicons
-	================================================== -->
-	<link rel="shortcut icon" href="assets/images/profile2.jpg" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puneeth | Senior Microservices Developer Portfolio</title>
+  <meta name="description"
+    content="Senior Microservices Developer with 4.5+ years of experience in Java, Spring Boot, and Reactive Architecture. Specialist in TMF Open APIs and Kafka.">
+  <meta name="keywords"
+    content="Microservices, Java, Spring Boot, WebFlux, Kafka, TMF Open API, Puneeth, Developer Portfolio">
 
-  <title>GITHUB TESTING</title>
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://puneethkanna.github.io/">
+  <meta property="og:title" content="Puneeth | Senior Microservices Developer">
+  <meta property="og:description"
+    content="Building scalable, event-driven enterprise platforms with Java and Reactive Architecture.">
+  <meta property="og:image" content="https://puneethkanna.github.io/assets/images/profile2.jpg">
 
-  <!-- Bootstrap core CSS -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://puneethkanna.github.io/">
+  <meta property="twitter:title" content="Puneeth | Senior Microservices Developer">
+  <meta property="twitter:description"
+    content="Building scalable, event-driven enterprise platforms with Java and Reactive Architecture.">
+  <meta property="twitter:image" content="https://puneethkanna.github.io/assets/images/profile2.jpg">
 
-  <!-- Custom css-->
-  <link href="assets/css/default.css" rel="stylesheet">
-  <link href="assets/css/fonts.css" rel="stylesheet">
-  <link href="assets/css/layout.css" rel="stylesheet">
-  <link href="assets/css/magnific-popup.css" rel="stylesheet">
-  <link href="assets/css/media-queries.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
 
-  <!-- Custom fonts for this template -->
-  <link href="assets/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+  <!-- CSS -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/portfolio-btn.css" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
-  <link href="assets/css/agency.css" rel="stylesheet">
-
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
 </head>
 
 <body id="page-top">
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">puneethkanna</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
+  <!-- ═══════════════════════════════════════════════
+       RADIANT BLUR BACKGROUND
+       ═══════════════════════════════════════════════ -->
+  <div class="radiant-bg" aria-hidden="true"></div>
+  <div class="brittany-flashlight" aria-hidden="true"></div>
+  <div class="cursor-follower" id="cursor-follower"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       PRELOADER
+       ═══════════════════════════════════════════════ -->
+  <div id="preloader" class="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="preloader-line"></div>
+      <span class="preloader-text">loading</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       SCROLL PROGRESS BAR
+       ═══════════════════════════════════════════════ -->
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════════ -->
+  <nav id="navbar" class="nav">
+    <div class="container nav__inner">
+      <a class="nav__brand" href="#page-top">puneeth<span class="accent">.</span></a>
+
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#about" class="nav__link" data-section="about">About</a></li>
+        <li><a href="#experience" class="nav__link" data-section="experience">Experience</a></li>
+        <li><a href="#skills" class="nav__link" data-section="skills">Skills</a></li>
+        <li><a href="#projects" class="nav__link" data-section="projects">Projects</a></li>
+        <li><a href="#contact" class="nav__link" data-section="contact">Contact</a></li>
+      </ul>
+
+      <!-- <div class="nav__actions">
+        <div class="btn-magnetic">
+          <a href="assets/PuneethResume_Final.pdf" target="_blank" class="btn btn--outline btn--sm"
+            aria-label="View Resume PDF">
+            <span class="btn__fill"></span>
+            <span>Resume</span>
+          </a>
+        </div> -->
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Light/Dark Theme">
+        <!-- Sun icon (shown in dark mode) -->
+        <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <!-- Moon icon (shown in light mode) -->
+        <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+        </svg>
       </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav text-uppercase ml-auto" id="nav-item-color">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#portfolio">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#resume">Resume</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-          </li>
-        </ul>
-      </div>
+      <button id="hamburger" class="hamburger" aria-label="Toggle Menu" aria-expanded="false">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </div>
     </div>
   </nav>
 
-    <!-- Header -->
-    <header id="home" class="masthead">
-      <div class="row banner">
-        <div class="banner-text">
-           <h1 class="responsive-headline">I'm Puneeth</h1>
-           <!--h3>I'm <span class="typed"></span>
-            <span class="typed-cursor">|</span-->
-           <h3>I'm a <span>Student Developer</span>  <!--span>Open Source Contributor</span--> <br><a class="smoothscroll" href="#about" style="text-decoration: none;">Start scrolling</a>
-           and learn more <a class="smoothscroll" href="#about" style="text-decoration: none;">about me</a>.</h3>
-           <hr />
-           <ul class="list-inline social-buttons">
-            <li class="list-inline-item">
-              <a href="https://twitter.com/puneeth_kanna" target="_blank">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="https://github.com/puneethkanna" target="_blank">
-                <i class="fab fa-github"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="https://www.linkedin.com/in/neerukonda-puneeth" target="_blank">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="https://sourcerer.io/puneethkanna" target="_blank">
-                <i class="fas fa-chart-line"></i>
-              </a>
-            </li>
-          </ul>
+  <!-- ═══════════════════════════════════════════════
+       MOBILE MENU OVERLAY
+       ═══════════════════════════════════════════════ -->
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <ul class="mobile-menu__links">
+      <li><a href="#about" class="mobile-menu__link">About</a></li>
+      <li><a href="#experience" class="mobile-menu__link">Experience</a></li>
+      <li><a href="#skills" class="mobile-menu__link">Skills</a></li>
+      <li><a href="#projects" class="mobile-menu__link">Projects</a></li>
+      <li><a href="#contact" class="mobile-menu__link">Contact</a></li>
+    </ul>
+    <div class="portfolio-btn-wrap">
+      <a href="assets/PuneethResume_Final.pdf" target="_blank" class="portfolio-btn mobile-menu__resume">
+        <span class="portfolio-btn-fill"></span>
+        <span class="portfolio-btn-text">Download resume</span>
+      </a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ═══════════════════════════════════════════════
+         HERO SECTION
+         ═══════════════════════════════════════════════ -->
+    <header id="hero" class="hero section">
+      <canvas id="hero-canvas" class="hero__canvas" aria-hidden="true"></canvas>
+      <div class="container hero__content">
+        <!-- <p class="hero__greeting reveal-text">Hi, my name is</p> -->
+        <h1 class="hero__name reveal-text">Puneeth<span class="accent">
+            <svg width="0.8em" height="0.8em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"
+              style="display: inline-block; vertical-align: baseline; margin-left: 0.1em; transform: translateY(0.1em);">
+              <polyline points="4 17 10 11 4 5"></polyline>
+              <line x1="12" y1="19" x2="20" y2="19"></line>
+            </svg>
+          </span></h1>
+        <h2 class="hero__tagline reveal-text">I build scalable enterprise systems</h2>
+        <p class="hero__desc reveal-text">
+          A <strong>Senior Microservices Developer</strong> with <strong>4.5+ years</strong> of experience
+          designing event-driven enterprise platforms using Java, Spring Boot, and Spring WebFlux.
+        </p>
+        <div class="hero__cta reveal-text">
+          <div class="portfolio-btn-wrap">
+            <a href="#about" class="portfolio-btn">
+              <span class="portfolio-btn-fill"></span>
+              <span class="portfolio-btn-text">Explore my work</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <polyline points="19 12 12 19 5 12" />
+              </svg>
+            </a>
+          </div>
+          <div class="portfolio-btn-wrap">
+            <a href="assets/PuneethResume_Final.pdf" target="_blank" class="portfolio-btn btn--outline">
+              <span class="portfolio-btn-fill"></span>
+              <span class="portfolio-btn-text">Download resume</span>
+            </a>
+          </div>
         </div>
-     </div>   
-    <p class="scrolldown">
-      <a class="smoothscroll" href="#about"><i class="fa fa-chevron-circle-down"></i></a>
-    </p>
+      </div>
+      <a href="#about" class="hero__scroll-hint" aria-label="Scroll to About section">
+        <div class="hero__scroll-mouse">
+          <div class="hero__scroll-dot"></div>
+        </div>
+      </a>
     </header>
 
-
-  <!-- Services -->
-  <section id="about">
-
-    <div class="row">
-
-       <div class="three columns">
-
-          <img class="profile-pic"  src="assets/images/me.jpg" alt="" />
-
-       </div>
-
-       <div class="nine columns main-col">
-
-          <h2>About Me</h2>
-
-         <p> My name is Neerukonda Puneeth, Simply Puneeth. In free time I will take free workshops to students on emerging technologies. I am good at problem-solving and very much interested in learning and implementing it. I love to play Basketball, Badminton and of course PUBG XD. I can say that browsing Internet as my Hobby, I do watch movies ;-).
-          <br> <br> <span class="life_cycle" >&lt;EAT&gt; &nbsp; &lt;SLEEP&gt; &nbsp; &lt;CODE&gt; &nbsp; &lt;COFFEE&gt; &nbsp;  &lt;REPEAT/&gt;</span>
-            </p>  
-           <!--    <table class="life_cycle">
-                  <tr>
-                       <th><i class="fas fa-utensils" aria-hidden="true"></i></th>
-                      <th><i class="fa fa-hotel" aria-hidden="true"></i> </th>
-                      <th><i class="fas fa-code" aria-hidden="true"></i></th>
-                      <th><i class="fas fa-coffee" aria-hidden="true"></i></th>
-                      <th><i class="fas fa-redo-alt" aria-hidden="true"></i></th>
-                  </tr>
-                  <tr>
-                      <td>&lt;EAT&gt;</td>
-                      <td>&lt;SLEEP&gt;</td>
-                      <td>&lt;CODE&gt;</td>
-                      <td>&lt;COFFEE&gt;</td>
-                      <td>&lt;REPEAT/&gt;</td>
-                  </tr>
-           </table>-->
-         
-
-          <div class="row">
-
-             <div class="columns contact-details">
-
-                <h2>Contact Details</h2>
-                <p class="address">
-             <span>N. Puneeth</span><br>
-             <span>Vardhaman college of Engg.<br>
-                             Hyderabad<br>
-                              +91 9121926166<br>
-                              +91 6304130906<br>
-                              neerukondapuneeth@gmail.com
-                   </span><br>
-           </p>
-
-             </div>
-      
-    <div class="columns download" style="height:3px; width:50px;">
-                <p>
-                   <a href="assets/PuneethResume_Final.pdf" target="_blank" class="button"><i class="fa fa-download" aria-hidden="true"></i></a> <span> Resume </span>
-                </p>
-             </div>
-
-
-          </div> <!-- end row -->
-   
-       </div> <!-- end .main-col -->
-
-    </div>
-     
- </section> <!-- About Section End-->
- 
-<!--Portifolio section
---------------------------------------------------------------------------------------->
- <section id="portfolio">
-
-  <div class="row">
-
-     <div class="twelve columns collapsed">
-
-        <h1>Check Out Some of My Projects.</h1>
-
-        <!-- portfolio-wrapper -->
-       
-        <div id="portfolio-wrapper" class="bgrid-quarters s-bgrid-thirds cf">
-
-           <div class="columns portfolio-item">
-              <div class="item-wrap">
-                 <a data-toggle="modal" href="#modal-01" title="">
-                    <img alt="" src="assets/images/portfolio/telegrambot.png">
-                    <div class="overlay">
-                       <div class="portfolio-item-meta">
-                           <h5>Vardhaman Telegram Bot</h5>
-                          <p>Studenet Engnaging Telegram bot</p>
-                        </div>
-                    </div>
-                    <div class="link-icon"><i class="fas fa-plus fa-2x"></i></div>
-                 </a>
-
-              </div>
-            </div> <!-- item end -->
-
-
-            <div class="columns portfolio-item">
-              <div class="item-wrap">
-                 <a data-toggle="modal" href="#modal-02" title="">
-                    <img alt="" src="assets/images/portfolio/flutter.png">
-                    <div class="overlay">
-                       <div class="portfolio-item-meta">
-                           <h5>Vardhaman Student App</h5>
-                          <p>Studenet Engnaging Android App</p>
-                        </div>
-                    </div>
-                    <div class="link-icon"><i class="fas fa-plus fa-2x"></i></div>
-                 </a>
-
-              </div>
-            </div> <!-- item end -->
-            <div class="columns portfolio-item">
-              <div class="item-wrap">
-                 <a  data-toggle="modal" href="#modal-03" title="">
-                    <img alt="" src="assets/images/portfolio/theflair.png">
-                    <div class="overlay">
-                       <div class="portfolio-item-meta">
-                           <h5>THE FLAIR</h5>
-                          <p>A website with Tech news and Tutorials</p>
-                        </div>
-                    </div>
-                    <div class="link-icon"><i class="fas fa-plus fa-2x"></i></div>
-                 </a>
-
-              </div>
-            </div> <!-- item end -->
-            <div class="columns portfolio-item">
-              <div class="item-wrap">
-                 <a  data-toggle="modal" href="#modal-04" title="">
-                    <img alt="" src="assets/images/portfolio/studentsaffairs.jpg">
-                    <div class="overlay">
-                       <div class="portfolio-item-meta">
-                           <h5>Vardhaman Student Affairs</h5>
-                          <p>A website of Vardhaman College for Student Affairs</p>
-                        </div>
-                    </div>
-                    <div class="link-icon"><i class="fas fa-plus fa-2x"></i></div>
-                 </a>
-
-              </div>
-            </div> <!-- item end -->
-
-        </div> <!-- portfolio-wrapper end -->
-
-     </div> <!-- twelve columns end -->
-
-
-     <!-- Modal Popup
-    --------------------------------------------------------------- -->
-      <!-- modal-01  -->
-        <div id="modal-01" class="portfolio-modal modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-            <img class="scale-with-grid" src="assets/images/portfolio/modals/vardhaman_telegram_bot.jpg" alt="" />
-            <div class="container">
-              <div class="row">
-                <div class="modal-body">
-                  <!-- Project Details Go Here -->
-                  <div class="description-box">
-                    <h4>Student Telegram bot</h4>
-                    <p>A Telegram bot for student engangment and simplifying the tasks done by students in day to day life in colllge website.</p>
-                    <span class="categories"><i class="fa fa-tag"></i>Chat bots, AI, Automation</span>
-                  </div>
-                  </ul>
-                </div>
-
-                </div>
-                </div>
-                <div class="link-box">
-                  <a href="https://t.me/vardhamanbot">Details</a> &nbsp;
-                  <a href="https://github.com/puneethkanna/vardhamantelebot">Code</a>
-                  <a class="popup-modal-dismiss" data-dismiss="modal">Close</a>
-                </div>
+    <!-- ═══════════════════════════════════════════════
+         ABOUT SECTION
+         ═══════════════════════════════════════════════ -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section__title"><span class="section__number">01.</span> About Me</h2>
+        <div class="about">
+          <div class="about__text">
+            <p>I am a <strong>Microservices Developer</strong> with 4.5+ years of experience designing and building
+              scalable, event-driven enterprise platforms using Java, Spring Boot, and Spring WebFlux.</p>
+            <p>I specialize in <strong>Reactive Microservices Architecture</strong> and implementation of <strong>TM
+                Forum (TMF) Open APIs</strong>. I have a proven track record of delivering complex API orchestration and
+              integrations, from architecture design to production deployment.</p>
+            <p class="about__focus"><code>&lt;REACTIVE&gt; &lt;EVENT-DRIVEN&gt; &lt;SECURE&gt;
+                &lt;SCALABLE/&gt;</code></p>
+            <div class="about__competencies">
+              <p class="label">Core Competencies:</p>
+              <ul class="about__skills-grid">
+                <li>Java (JDK 21)</li>
+                <li>Spring Boot / WebFlux</li>
+                <li>Event-Driven (Kafka)</li>
+                <li>Keycloak Security</li>
+                <li>TMF Open APIs</li>
+                <li>Performance Optimization</li>
+              </ul>
             </div>
-          </div>      
-        </div>
-      <!-- modal-01 End -->
-
-      <!-- modal-02 -->
-        <div id="modal-02" class="portfolio-modal modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-            <img class="scale-with-grid" src="assets/images/portfolio/modals/vardhaman student app.png" alt="" />
-            <hr>
-            <div class="container">
-              <div class="row">
-                <div class="modal-body">
-                  <!-- Project Details Go Here -->
-                  <div class="description-box">
-                    <h4>Vardhaman Student App</h4>
-                    <p>An app for student engangment and simplifying the tasks done by students in day to day life in colllge website.</p>
-                    <span class="categories"><i class="fa fa-tag"></i>Chat bots, AI, Automation</span>
-                  </div>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="link-box">
-              <a href="https://t.me/vardhamanbot">Details</a> &nbsp;
-              <a href="https://github.com/puneethkanna/vardhamanapp">Code</a>
-              <a class="popup-modal-dismiss" data-dismiss="modal">Close</a>
-            </div>
-            </div>
-          </div>      
-        </div>
-        <!-- modal-02 End -->
-
-        <!-- modal-03 -->
-        <div id="modal-03" class="portfolio-modal modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-            <img class="scale-with-grid" src="assets/images/portfolio/modals/theflair1.png" alt="" />
-            <hr>
-            <div class="container">
-              <div class="row">
-                <div class="modal-body">
-                      <!-- Project Details Go Here -->
-                      <div class="description-box">
-                        <h4>The Flair</h4>
-                        <p>A simple Tech website with updated tech news and some tutorials.</p>
-                        <span class="categories"><i class="fa fa-tag"></i>Chat bots, AI, Automation</span>
-                      </div>
-                      </ul>
-                </div>
-              </div>
-            </div>
-              <div class="link-box">
-                <a href="https://theflair.tk">Details</a> &nbsp;
-                <a href="https://github.com/theflair/theflair">Code</a>
-                <a class="popup-modal-dismiss" data-dismiss="modal">Close</a>
-              </div>
-            </div>
-           </div>      
           </div>
-        <!-- modal-03 End -->
-
-        <!-- modal-04 -->
-        <div id="modal-04" class="portfolio-modal modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-            <img class="scale-with-grid" src="assets/images/portfolio/modals/studentsaffairs.jpg" alt="" />
-            <div class="container">
-              <div class="row">
-                <div class="modal-body">
-                      <!-- Project Details Go Here -->
-                      <div class="description-box">
-                     <h4>Student Affairs website</h4>
-                     <p>A website for Vardhaman College for managing Student Affairs.</p>
-                     <span class="categories"><i class="fa fa-tag"></i>Chat bots, AI, Automation</span>
-                     </div>
-                      </ul>
-                </div>
-              </div>
+          <div class="about__image-wrap">
+            <div class="about__image-border">
+              <img src="assets/images/profile2.jpg" alt="Puneeth - Senior Microservices Developer" loading="lazy"
+                class="about__image">
             </div>
-              <div class="link-box">
-                <a href="https://vcestudentaffairs.tk/">Details</a> &nbsp;
-                <a href="https://github.com/vce-student-affairs/vce">Code</a>
-                <a class="popup-modal-dismiss" data-dismiss="modal">Close</a>
-              </div>
-            </div>
-           </div>      
           </div>
-        <!-- modal-04 End -->
-  </div> <!-- row End -->
+        </div>
+      </div>
+    </section>
 
-</section> <!-- Portfolio Section End-->
+    <!-- ═══════════════════════════════════════════════
+         EXPERIENCE SECTION
+         ═══════════════════════════════════════════════ -->
+    <section id="experience" class="section">
+      <div class="container">
+        <h2 class="section__title"><span class="section__number">02.</span> Experience</h2>
 
-
- <!-- Resume Section
-   ================================================== -->
-   <section id="resume">
-    <!-- Education
-    ----------------------------------------------- -->
-    <div class="row education" id="education">
-
-       <div class="three columns header-col">
-          <h1><span>Education</span></h1>
-       </div>
-
-       <div class="nine columns main-col">
-
-          <div class="row item">
-             <div class="twelve columns">
-                <h3>Bachelor's Degree</h3>
-                <p class="info">Vardhaman college of Engg, Computer science, 8.3 <span>&bull;</span> <em class="date"></em></p>
-             </div>
-          </div> <!-- item end -->
-
-          <div class="row item">
-             <div class="twelve columns">
-                <h3>Intermediate</h3>
-                <p class="info">Resonance Junior College, M.P.C, 92.1% <span>&bull;</span> <em class="date">March 2017</em></p>
-             </div>
-          </div> <!-- item end -->
-
-            <div class="row item">
-             <div class="twelve columns">
-                <h3>School</h3>
-                <p class="info">Resonance Info School, S.S.C, 8.8 <span>&bull;</span> <em class="date">March 2015</em></p>
-             </div>
-            </div> <!-- item end -->  
-       </div> <!-- main-col end -->
-    </div> <!-- End Education -->
-
-    <!-- Work
-    ----------------------------------------------- >
-    <div class="row work">
-
-       <div class="three columns header-col">
-          <h1><span>Work</span></h1>
-       </div>
-
-       <div class="nine columns main-col">
-
-         <div class="row item">
-             <div class="twelve columns">
-                <h3>Synopsys</h3>
-                <p class="info">Technical Intern - IT <span>&bull;</span> <em class="date">September 2019 - Present</em></p>
-                <p> Python Application Development and Automation of tasks using python.
+        <div class="timeline">
+          <!-- Timeline Item 1 -->
+          <div class="timeline__item">
+            <div class="timeline__marker"></div>
+            <div class="timeline__content">
+              <h3 class="timeline__role">Senior Microservices Developer</h3>
+              <p class="timeline__meta">4.5+ Years &middot; Java &middot; Spring Boot &middot; Reactive Architecture
               </p>
-             </div>
-          </div>  <!-- item end -->
-
-         <!-- <div class="row item">
-             <div class="twelve columns">
-                <h3>Next work name</h3>
-                <p class="info">Photographer dream<span>&bull;</span> <em class="date">march 2020 - February 2090</em></p>
-                <p>
-               About my next work
-                </p>
-             </div>
-          </div> <!-- item end --> 
-
-       <!--/div> <!-- main-col end -->
-
-    <!--/div> <!-- End Work -->
-
-
-    <!-- Skills
-    ----------------------------------------------- -->
-    <div class="row skill">
-
-       <div class="three columns header-col">
-          <h1><span>Technical Skills</span></h1>
-       </div>
-
-       <div class="nine columns main-col">
-
-          <p> <br>
-              Everything about technical skills
-          </p>
-
-      <div class="bars">
-
-         <ul class="skills">
-            <li><span class="bar-expand python"></span><em>Python</em></li>
-            <li><span class="bar-expand cjava"></span><em>C, Java</em></li>
-            <li><span class="bar-expand flask"></span><em>Flask</em></li>
-            <li><span class="bar-expand flutter"></span><em>Flutter</em></li>
-            <li><span class="bar-expand html5"></span><em>HTML5</em></li>
-            <li><span class="bar-expand css"></span><em>CSS3</em></li>
-            <li><span class="bar-expand javascript"></span><em>JavaScript</em></li>  
-            <li><span class="bar-expand android"></span><em>Android Studio</em></li>
-        </ul>
-
-      </div><!-- end skill-bars -->
-
-    </div> <!-- main-col end -->
-        
-          <div class="three columns header-col">
-          <h1><span>Non-Tech Skills</span></h1>
-       </div>
-
-       <div class="nine columns main-col">
-
-          <p> <br>
-              This is all about my non technical skills
-          </p>
-
-      <div class="bars">
-
-         <ul class="skills">
-            <li><span class="bar-expand photography"></span><em>Photography</em></li>
-            <li><span class="bar-expand presentation"></span><em>Presentation</em></li>
-            <li><span class="bar-expand photoshop"></span><em>Photoshop</em></li>
-                      
-          <!--<li><span class="bar-expand html5"></span><em>HTML5</em></li>
-                <li><span class="bar-expand js"></span><em>js</em></li> -->
-        </ul>
-      </div><!-- end skill-bars -->
-    </div> <!-- main-col end -->
-    </div> <!-- End skills -->
- </section>
-
-  <!-- Resume Section End-->
- <!-- Contact Section
-   ================================================== -->
-   <section id="contact">
-
-    <div class="row section-head">
-
-       <div class="two columns header-col">
-
-          
-
-       </div>
-
-       <div class="ten columns">
-
-             <p class="lead"> **You can contact from the following form very soon.**<br>
-                 But for now please ping me to any of those provided in my contact details.
-             </p>
-
-       </div>
-
-    </div>
-
-    <div class="row">
-
-       <div class="eight columns">
-
-          <!-- form -->
-          <form action="" method="post" id="contactForm" name="contactForm">
-     <fieldset>
-
-             <div>
-          <label for="contactName">Name <span class="required">*</span></label>
-          <input type="text" value="" size="35" id="contactName" name="contactName">
-             </div>
-
-             <div>
-          <label for="contactEmail">Email <span class="required">*</span></label>
-          <input type="text" value="" size="35" id="contactEmail" name="contactEmail">
-             </div>
-
-             <div>
-          <label for="contactSubject">Subject</label>
-          <input type="text" value="" size="35" id="contactSubject" name="contactSubject">
-             </div>
-
-             <div>
-                <label for="contactMessage">Message <span class="required">*</span></label>
-                <textarea cols="50" rows="8" id="contactMessage" name="contactMessage"></textarea>
-             </div>
-
-             <div>
-              <div class="col-lg-9 text-center">
-                <div id="success"></div>
-                <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase submit" type="submit">Send Message</button>
-              </div>
-             </div>
-
-     </fieldset>
-      </form> <!-- Form End -->
-
-          <!-- contact-warning -->
-          <div id="message-warning"> Error </div>
-          <!-- contact-success -->
-      <div id="message-success">
-             <i class="fa fa-check"></i>Your message was sent, thank you!<br>
-      </div>
-
-       </div>
-
-
-       <aside class="four columns footer-widgets">
-
-          <div class="widget widget_contact">
-
-        <h4>Address and Phone</h4>
-        <p class="address">
-          N. Puneeth<br>
-          Vardhaman college of Engg.<br>
-          Hyderabad<br>
-                      Telangana, India<br>
-          <span><a href="tel:+919121926166">+91 9121926166</a></span><br>
-          <span><a href="tel:+916304130906">+91 6304130906</a></span><br>
-                      <span><a href="mailto:neerukondapuneeth@gmail.com"><i class="fas fa-envelope"></i>  neerukondapuneeth@gmail.com</a></span><br>
-                      <span><a href="https://t.me/neerukondapuneeth"><i class="fab fa-telegram"></i> https://t.me/neerukondapuneeth</a></span>
-        </p>
-
-      </div>
-
-       <!--   <div class="widget widget_tweets">
-             <h4 class="widget-title">Latest Tweets</h4>
-             <ul id="twitter">
-                <li>
-                   <span>
-                   This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
-                   Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum
-                   <a href="#">http://t.co/CGIrdxIlI3</a>
-                   </span>
-                   <b><a href="#">2 Days Ago</a></b>
-                </li>
-                <li>
-                   <span>
-                   Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-                   eaque ipsa quae ab illo inventore veritatis et quasi
-                   <a href="#">http://t.co/CGIrdxIlI3</a>
-                   </span>
-                   <b><a href="#">3 Days Ago</a></b>
-                </li>
-             </ul>
-        </div> -->
-
-       </aside>
- </div>
-
-</section> <!-- Contact Section End-->
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-4">
-          <span class="copyright">Copyright &copy; 2020, Neerukonda Puneeth.</span>
+              <ul class="timeline__details">
+                <li><strong>Scalable Architecture:</strong> Developed reactive microservices using Spring Boot & WebFlux
+                  with event-driven design using Kafka.</li>
+                <li><strong>Enterprise Integration:</strong> Designed onboarding workflows, agreement lifecycle
+                  management, and integrated with PLM, ESB, and external APIs.</li>
+                <li><strong>Security & Multi-Tenancy:</strong> Implemented RBAC and tenant-level data isolation
+                  integrated with Keycloak.</li>
+                <li><strong>Optimization:</strong> Improved API response times by 30% through payload optimization and
+                  parallel processing.</li>
+                <li><strong>API Standards:</strong> Built and governed APIs aligned with TMF Open API standards for
+                  enterprise reuse.</li>
+                <li><strong>Ownership:</strong> Successfully delivered MVP1 & MVP2 phases for B2B onboarding and product
+                  management platforms.</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="col-md-4">
-          <ul class="list-inline social-buttons">
-            <li class="list-inline-item">
-              <a href="https://twitter.com/puneeth_kanna">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="https://github.com/puneethkanna/">
-                <i class="fab fa-github"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="http://www.linkedin.com/in/neerukonda-puneeth">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="https://sourcerer.io/puneethkanna" target="_blank">
-                <i class="fas fa-chart-line"></i>
-              </a>
-            </li>
-          </ul>
+
+        <!-- Education -->
+        <div class="education">
+          <h3 class="section__subtitle">Education</h3>
+          <div class="education__grid">
+            <div class="education__item">
+              <h4>Bachelor's Degree</h4>
+              <p class="text-muted">Vardhaman College of Engineering, Computer Science &middot; GPA: 8.3</p>
+            </div>
+            <div class="education__item">
+              <h4>Intermediate</h4>
+              <p class="text-muted">Resonance Junior College, M.P.C &middot; 92.1% (March 2017)</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div id="go-top">
-         <a class="smoothscroll" title="Back to Top" href="#home">
-           <i class=" 	fa fa-chevron-up"></i>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SKILLS SECTION
+         ═══════════════════════════════════════════════ -->
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section__title"><span class="section__number">03.</span> Skills & Expertise</h2>
+        <div class="skills-container">
+
+          <!-- Programming Languages -->
+          <div class="skill-card">
+            <h4 class="skill-category__label">Programming Languages</h4>
+            <div class="skill-category__tags">
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12.9 2.5c0-.1 0-.1-.1-.1h-2.1c-.1 0-.1 0-.1.1v2.1c0 .1 0 .1.1.1h2.1c.1 0 .1 0 .1-.1V2.5zM12.9 19.4c0-.1 0-.1-.1-.1h-2.1c-.1 0-.1 0-.1.1v2.1c0 .1 0 .1.1.1h2.1c.1 0 .1 0 .1-.1v-2.1zM21.5 10.9c.1 0 .1 0 .1-.1v-2.1c0-.1 0-.1-.1-.1h-2.1c-.1 0-.1 0-.1.1v2.1c0 .1 0 .1.1.1h2.1zM4.6 10.9c.1 0 .1 0 .1-.1v-2.1c0-.1 0-.1-.1-.1H2.5c-.1 0-.1 0-.1.1v2.1c0 .1 0 .1.1.1h2.1zM18.8 18.8l-1.5-1.5c-.1-.1-.2-.1-.3 0l-1.5 1.5c-.1.1-.1.2 0 .3l1.5 1.5c.1.1.2.1.3 0l1.5-1.5c.1-.1.1-.2 0-.3zM7.5 7.5L6 6c-.1-.1-.2-.1-.3 0L4.2 7.5c-.1.1-.1.2 0 .3l1.5 1.5c.1.1.2.1.3 0l1.5-1.5c.1-.1.1-.2 0-.3zM18.8 5.2c-.1-.1-.2-.1-.3 0L17 6.7c-.1.1-.1.2 0 .3l1.5 1.5c.1.1.2.1.3 0l1.5-1.5c.1-.1.1-.2 0-.3l-1.5-1.5zM7.5 16.5c-.1-.1-.2-.1-.3 0L5.7 18c-.1.1-.1.2 0 .3l1.5 1.5c.1.1.2.1.3 0l1.5-1.5c.1-.1.1-.2 0-.3l-1.5-1.5zM12 7.5c-2.5 0-4.5 2-4.5 4.5s2 4.5 4.5 4.5 4.5-2 4.5-4.5-2-4.5-4.5-4.5zM12 15c-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3-1.3 3-3 3z" />
+                </svg>
+                Java (JDK 21)
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
+                </svg>
+                SQL
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.5 14H7.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h9c.28 0 .5.22.5.5s-.22.5-.5.5zm0-2H7.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h9c.28 0 .5.22.5.5s-.22.5-.5.5zm0-2H7.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h9c.28 0 .5.22.5.5s-.22.5-.5.5zm0-2H7.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h9c.28 0 .5.22.5.5s-.22.5-.5.5z" />
+                </svg>
+                Shell Scripting
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H7.11l.94-2h6.9l-.94 2zm1.06-4H5.94l.94-2h10.24l-.94 2zM19.06 10H4.94l.94-2h12.24l-.94 2z" />
+                </svg>
+                CriteriaBuilder
+              </span>
+            </div>
+          </div>
+
+          <!-- Frameworks & Libraries -->
+          <div class="skill-card">
+            <h4 class="skill-category__label">Frameworks & Libraries</h4>
+            <div class="skill-category__tags">
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M16.97 11.23l-1.39-4.83c-.09-.3-.36-.5-.67-.5h-2.91c-.31 0-.58.2-.67.5L9.94 11.23c-.11.41.22.81.65.81h1.34v7.41c0 .32.22.58.5.58.28 0 .5-.26.5-.58V12.04h1.34c.43 0 .76-.4.65-.81zM11.96 1.12c-5.99 0-10.84 4.85-10.84 10.84 0 5.99 4.85 10.84 10.84 10.84 5.99 0 10.84-4.85 10.84-10.84 0-5.99-4.85-10.84-10.84-10.84zm0 20.01c-5.06 0-9.17-4.11-9.17-9.17 0-5.06 4.11-9.17 9.17-9.17 5.06 0 9.17 4.11 9.17 9.17 0 5.06-4.11 9.17-9.17 9.17z" />
+                </svg>
+                Spring Boot
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                </svg>
+                Spring WebFlux
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2l-5.5 9h11L12 2zm0 2.8L15.3 10H8.7L12 4.8zM12 22l5.5-9h-11l5.5 9zm0-2.8l-3.3-5.2h6.6L12 19.2z" />
+                </svg>
+                Reactive Programming
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm0 18c4.41 0 8-3.59 8-8s-3.59-8-8-8-8 3.59-8 8 3.59 8 8 8zm0-14l-4 4h3v4h2v-4h3l-4-4z" />
+                </svg>
+                Hibernate
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z" />
+                </svg>
+                Virtual Threads
+              </span>
+            </div>
+          </div>
+
+          <!-- AI & Agentic Tools -->
+          <div class="skill-card">
+            <h4 class="skill-category__label">AI & Agentic Tools</h4>
+            <div class="skill-category__tags">
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L1 21h22L12 2zm0 3.45l8.15 14.1H3.85L12 5.45zM11 10h2v5h-2v-5zm0 6h2v2h-2v-2z" />
+                </svg>
+                LangChain
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L1 21h22L12 2zM12 6l7.7 13H4.3L12 6z" />
+                </svg>
+                Gemini SDK
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" />
+                </svg>
+                Agentic Workflows
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M14 10H2v2h12v-2zm0-4H2v2h12V6zM2 16h8v-2H2v2zm19.5-4.5L23 13l-6.99 7-4.51-4.5L13 14l3.01 3 5.49-5.5z" />
+                </svg>
+                Prompt Engineering
+              </span>
+            </div>
+          </div>
+
+          <!-- Architecture & Design -->
+          <div class="skill-card">
+            <h4 class="skill-category__label">Architecture & Design</h4>
+            <div class="skill-category__tags">
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-12h2v2h-2zm0 4h2v5h-2z" />
+                </svg>
+                Microservices Architecture
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
+                </svg>
+                Event-Driven Architecture
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                </svg>
+                Domain-Driven API Design
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z" />
+                </svg>
+                TMF Open API Standards
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z" />
+                </svg>
+                Multi-Tenant System Design
+              </span>
+            </div>
+          </div>
+
+          <!-- Security & Access Control -->
+          <div class="skill-card">
+            <h4 class="skill-category__label">Security & Access Control</h4>
+            <div class="skill-category__tags">
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z" />
+                </svg>
+                Keycloak (OIDC)
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+                </svg>
+                OAuth2 / Token Validation
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                </svg>
+                RBAC / RB-Isolation
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-2h2v2zm0-4h-2V7h2v6z" />
+                </svg>
+                Tenant-Level Data Isolation
+              </span>
+            </div>
+          </div>
+
+          <!-- DB & Infrastructure -->
+          <div class="skill-card">
+            <h4 class="skill-category__label">DB & Infrastructure</h4>
+            <div class="skill-category__tags">
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C9.24 2 7 3.79 7 6s2.24 4 5 4 5-1.79 5-4-2.24-4-5-4zm0 18c-2.76 0-5-1.79-5-4s2.24-4 5-4 5 1.79 5 4-2.24 4-5 4zm0-6c-2.76 0-5-1.79-5-4s2.24-4 5-4 5 1.79 5 4-2.24 4-5 4z" />
+                </svg>
+                PostgreSQL
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15.5v-3.5l1-1 1 1v3.5l-1 1-1-1zm1-5.5l-1-1-1 1h-3.5l-1-1 1-1h3.5l1 1 1-1h3.5l1 1-1 1h-3.5z" />
+                </svg>
+                MongoDB
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                </svg>
+                Redis
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                </svg>
+                Apache Kafka
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M13.48 4.81l7.83 4.54a1.5 1.5 0 0 1 .74 1.3v9.06a1.5 1.5 0 0 1-.74 1.3l-7.83 4.54a1.5 1.5 0 0 1-1.46 0l-7.83-4.54a1.5 1.5 0 0 1-.74-1.3v-9.06a1.5 1.5 0 0 1 .74-1.3l7.83-4.54a1.5 1.5 0 0 1 1.46 0z" />
+                </svg>
+                Docker
+              </span>
+            </div>
+          </div>
+
+          <!-- DevOps & Tools -->
+          <div class="skill-card">
+            <h4 class="skill-category__label">DevOps & Tools</h4>
+            <div class="skill-category__tags">
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M2.6 10.59L8.38 4.8l1.69 1.7c-.24.85.15 1.78.93 2.23.5.28 1.05.35 1.56.21l2.03 2.03c-.14.51-.07 1.06.21 1.56.45.78 1.38 1.17 2.23.93l1.7 1.69-5.79 5.78-5.78-5.78 1.69-1.69c.85.24 1.78-.15 2.23-.93.28-.5.35-1.05.21-1.56L9.62 9.17c-.51.14-1.06.07-1.56-.21-.78-.45-1.17-1.38-.93-2.23l-1.69-1.69c-2.83 2.82-2.83 7.42 0 10.24l7.16 7.15 7.16-7.15c2.83-2.82 2.83-7.42 0-10.24L12 12 2.6 10.59z" />
+                </svg>
+                Git / GitHub / GitLab
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                </svg>
+                Jenkins
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-12h2v4h-2zm0 6h2v2h-2z" />
+                </svg>
+                Linux
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                </svg>
+                Postman
+              </span>
+              <span class="skill-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v10h-2zm0 12h2v2h-2z" />
+                </svg>
+                API Gateway
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         PROJECTS SECTION
+         ═══════════════════════════════════════════════ -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section__title"><span class="section__number">04.</span> Featured Work</h2>
+        <div class="projects-grid">
+
+          <!-- Project 1 -->
+          <div class="project-card">
+            <div class="project-card__header">
+              <svg class="project-card__icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5">
+                <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" />
+                <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
+              </svg>
+            </div>
+            <h3 class="project-card__title">Enterprise B2B Onboarding Platform</h3>
+            <p class="project-card__desc">Large-scale platform enabling partner onboarding, agreement management, and
+              product publishing in a multi-tenant environment.</p>
+            <ul class="project-card__highlights">
+              <li>Delivered critical microservices across multiple MVP phases.</li>
+              <li>Integrated complex enterprise systems (PLM, ESB).</li>
+              <li>Optimized system for high-volume data handling.</li>
+              <li>Reduced API response time significantly through optimization strategies.</li>
+            </ul>
+            <div class="project-card__tech">
+              <span>Java</span>
+              <span>Spring WebFlux</span>
+              <span>Kafka</span>
+              <span>Keycloak</span>
+              <span>TMF APIs</span>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card">
+            <div class="project-card__header">
+              <svg class="project-card__icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <h3 class="project-card__title">Centralized Notification Engine</h3>
+            <p class="project-card__desc">Generic, reusable notification service supporting multi-channel (Email, SMS)
+              communication for diverse enterprise projects.</p>
+            <ul class="project-card__highlights">
+              <li>Designed scalable client onboarding for new projects.</li>
+              <li>Built asynchronous feedback and tracking systems.</li>
+              <li>Standardized communication across enterprise portfolios.</li>
+              <li>Reduced integration effort for new projects significantly.</li>
+            </ul>
+            <div class="project-card__tech">
+              <span>Microservices</span>
+              <span>Asynchronous</span>
+              <span>API Integration</span>
+              <span>Kafka</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         CONTACT SECTION
+         ═══════════════════════════════════════════════ -->
+    <section id="contact" class="section">
+      <div class="container contact">
+        <p class="contact__overline">05. What's Next?</p>
+        <h2 class="contact__title">Get In Touch</h2>
+        <p class="contact__desc">I'm currently looking for new opportunities and my inbox is always open. Whether you
+          have a question or just want to say hi, I'll try my best to get back to you!</p>
+        <div class="portfolio-btn-wrap">
+          <a href="mailto:neerukondapuneeth@gmail.com" class="portfolio-btn contact__cta">
+            <span class="portfolio-btn-fill"></span>
+            <span class="portfolio-btn-text">Say hello</span>
           </a>
+        </div>
       </div>
+    </section>
+  </main>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer__socials">
+      <!-- GitHub -->
+      <a href="https://github.com/puneethkanna" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+        class="footer__social-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+        </svg>
+      </a>
+      <!-- LinkedIn -->
+      <a href="https://linkedin.com/in/neerukonda-puneeth" target="_blank" rel="noopener noreferrer"
+        aria-label="LinkedIn" class="footer__social-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+        </svg>
+      </a>
+      <!-- Twitter / X -->
+      <a href="https://twitter.com/puneeth_kanna" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
+        class="footer__social-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+        </svg>
+      </a>
     </div>
+    <p class="footer__credit">Built with care by <strong>Puneeth</strong></p>
   </footer>
-  <!-- Bootstrap core JavaScript -->
-  <script src="assets/vendor/jquery/jquery.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 
-  <!-- Plugin JavaScript -->
-  <script src="assets/vendor/jquery-easing/jquery.easing.js"></script>
-
-  <!-- Contact form JavaScript -->
-  <script src="assets/js/jqBootstrapValidation.js"></script>
-  <script src="assets/js/contact_me.js"></script>
-
-  <!-- Custom scripts for this template -->
-  <script src="assets/js/agency.js"></script>
-  <script src="assets/js/init.js"></script>
-  <script src="assets/js/jqBootstrapValidation.js"></script>
-  <script src="assets/js/jquery-1.10.2.min.js"></script>
-  <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-  <script src="assets/js/jquery.fittext.js"></script>
-  <script src="assets/js/jquery.flexslider.js"></script>
-  <script src="assets/js/magnific-popup.js"></script>
-  <script src="assets/js/modernizr.js"></script>
-  <script src="assets/js/waypoints.js"></script>
-  <script src="assets/js/typed/typed.js"></script>
-
+  <!-- ═══════════════════════════════════════════════
+       SCRIPTS (order matters: theme first, then animations)
+       ═══════════════════════════════════════════════ -->
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/animations.js" defer></script>
 </body>
 
 </html>
