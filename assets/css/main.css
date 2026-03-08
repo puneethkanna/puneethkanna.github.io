@@ -112,6 +112,8 @@ html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     cursor: default;
+    background-color: var(--bg-primary);
+    transition: background-color var(--dur-slow) var(--ease-out);
 }
 
 body {
@@ -688,6 +690,52 @@ body.is-scrolled .brittany-flashlight {
 
 .hero__name .accent {
     -webkit-text-fill-color: var(--accent-color);
+}
+
+.hero__tagline::after {
+    content: '_';
+    /* 9.5s is the exact duration of our dots typing, it runs once, then halts. */
+    /* Then the terminal-blink takes over immediately after at 9.5s mark. */
+    animation: typing-dots 9.5s ease-in-out 1 forwards, terminal-blink 1s step-end 9.5s infinite forwards;
+}
+
+@keyframes typing-dots {
+
+    0%,
+    20% {
+        content: '';
+    }
+
+    25%,
+    45% {
+        content: '.';
+    }
+
+    50%,
+    70% {
+        content: '..';
+    }
+
+    75%,
+    95% {
+        content: '...';
+    }
+
+    100% {
+        content: '_';
+    }
+}
+
+@keyframes terminal-blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
 }
 
 .hero__tagline {

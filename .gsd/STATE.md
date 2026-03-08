@@ -6,12 +6,12 @@
 - **Status**: Paused at 2026-03-08 20:56 IST
 
 ## Last Session Summary
-Re-engineered the Cuberto button animation to exactly match the "What We Do" button on their reference site. All GSAP and JavaScript magnetic mouse-tracking mechanics were entirely deleted. The button now relies on 100% pure CSS, featuring a subtle `scale(1.05)` magnification on hover and a smooth bottom-to-top fluid fill (`transform: translateY(0)` with a flattening border-radius).
+Modified the CSS typing dots animation on the hero section name accent to run exactly once and resolve into a blinking terminal underscore (`_`) cursor. Prior to that, fixed the overscroll (spring animation) background color mismatch on MacOS by setting the `html` element's `background-color` to `var(--bg-primary)` and adding a transition in `main.css`.
 
 ## In-Progress Work
 - Ready to move forward with the next UI component or overarching theme design.
-- Files modified: `assets/css/portfolio-btn.css`, `index.html`. Removed `assets/js/portfolio-btn.js`.
-- Tests status: Verified button remains completely stationary while filling visually.
+- Files modified: `assets/css/main.css` (html background, typing dots/terminal blink), `assets/css/portfolio-btn.css`, `index.html` (removed static dot, hero section).
+- Tests status: Verified button remains stationary while filling visually, typing dots run once and transition to a blinking terminal cursor.
 
 ## Blockers
 - None.
