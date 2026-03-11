@@ -1,0 +1,219 @@
+/* ============================================================
+   CONTACT SECTION — Integrated & Consistent
+   ============================================================ */
+
+.contact__grid {
+    display: flex;
+    gap: var(--space-2xl);
+    align-items: flex-start;
+    margin-top: var(--space-xl);
+}
+
+.contact__info {
+    flex: 1.2;
+}
+
+.contact__preheader {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--accent-secondary);
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-sm);
+    text-transform: uppercase;
+}
+
+.contact__massive-link {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    color: var(--text-primary);
+    /* text-decoration: none;
+    line-height: 1.1;
+    letter-spacing: -4px;
+    display: block;
+    width: fit-content;
+    white-space: nowrap;
+    margin-bottom: var(--space-lg); */
+    /* transition: var(--ease-premium) 0.5s; */
+    /* transform-origin: left center; */
+
+    /* font-weight: 900; */
+    /* font-size: var(--text-xl); */
+    /* color: var(--fg); */
+    /* text-decoration: none; */
+    /* letter-spacing: -4px; */
+    /* transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1); */
+    /* display: inline-block; */
+
+    /* font-weight: 900;
+    font-size: var(--text-xl); */
+    color: var(--fg);
+    text-decoration: none;
+    letter-spacing: -4px;
+    transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+    display: inline-block;
+    width: fit-content;
+    white-space: nowrap;
+}
+
+.contact__massive-link:hover {
+    color: var(--accent-color);
+    /* font-family: var(--font-serif); */
+    font-style: italic;
+    letter-spacing: 4px;
+    transform: skewX(-5deg);
+    /* translateX(8px); */
+}
+
+.contact__socials {
+    display: flex;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+    flex-wrap: wrap;
+}
+
+.contact__social-link {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color var(--dur-base);
+}
+
+.contact__social-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+    transition: width var(--dur-base) var(--ease-out);
+}
+
+.contact__social-link:hover {
+    color: var(--accent-color);
+}
+
+.contact__social-link:hover::after {
+    width: 100%;
+}
+
+.contact__resume {
+    margin-top: var(--space-lg);
+}
+
+/* --- Terminal Implementation --- */
+.terminal {
+    flex: 1;
+    width: 100%;
+    min-width: 320px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    font-family: var(--font-mono);
+    transition: transform 0.3s var(--ease-out);
+}
+
+.terminal:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.terminal__header {
+    background: var(--border-color);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.terminal__dots {
+    display: flex;
+    gap: 6px;
+}
+
+.terminal__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.terminal__dot--red {
+    background: #ff5f56;
+}
+
+.terminal__dot--yellow {
+    background: #ffbd2e;
+}
+
+.terminal__dot--green {
+    background: #27c93f;
+}
+
+.terminal__title {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.terminal__body {
+    padding: 8px 20px 20px 20px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--text-primary);
+    min-height: 220px;
+    white-space: pre-wrap;
+    background: var(--bg-card);
+}
+
+.terminal__prompt {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.terminal__cmd {
+    color: var(--text-primary);
+}
+
+.terminal__out {
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+.terminal__success {
+    color: #27c93f;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .contact__grid {
+        flex-direction: column;
+        gap: var(--space-xl);
+    }
+
+    .contact__info {
+        flex: none;
+        width: 100%;
+    }
+
+    .terminal {
+        flex: none;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact__massive-link {
+        font-size: 1.8rem;
+    }
+}

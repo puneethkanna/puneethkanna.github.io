@@ -36,6 +36,7 @@
 
     /* --- Typography --- */
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-serif: 'EB Garamond', serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 
     /* --- Spacing Scale --- */
@@ -143,12 +144,7 @@ body {
         background-color 0.3s var(--ease-premium);
 }
 
-.cursor-follower.is-hovering {
-    width: 60px;
-    height: 60px;
-    background-color: rgba(255, 255, 255, 1);
-    mix-blend-mode: difference;
-}
+
 
 /* Hide cursor on mobile or if user prefers reduced motion */
 @media (hover: none) or (prefers-reduced-motion: reduce) {

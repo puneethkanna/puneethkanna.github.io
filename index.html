@@ -16,7 +16,7 @@
   <meta property="og:title" content="Puneeth | Senior Microservices Developer">
   <meta property="og:description"
     content="Building scalable, event-driven enterprise platforms with Java and Reactive Architecture.">
-  <meta property="og:image" content="https://puneethkanna.github.io/assets/images/profile2.jpg">
+  <meta property="og:image" content="https://puneethkanna.github.io/assets/images/profile-latest.jpg">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
@@ -24,18 +24,19 @@
   <meta property="twitter:title" content="Puneeth | Senior Microservices Developer">
   <meta property="twitter:description"
     content="Building scalable, event-driven enterprise platforms with Java and Reactive Architecture.">
-  <meta property="twitter:image" content="https://puneethkanna.github.io/assets/images/profile2.jpg">
+  <meta property="twitter:image" content="https://puneethkanna.github.io/assets/images/profile-latest.jpg">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
     rel="stylesheet">
 
   <!-- CSS -->
   <link href="assets/css/main.css" rel="stylesheet">
   <link href="assets/css/portfolio-btn.css" rel="stylesheet">
+  <link href="assets/css/contact.css" rel="stylesheet">
 
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
@@ -213,7 +214,7 @@
           </div>
           <div class="about__image-wrap">
             <div class="about__image-border">
-              <img src="assets/images/profile2.jpg" alt="Puneeth - Senior Microservices Developer" loading="lazy"
+              <img src="assets/images/profile-latest.jpg" alt="Puneeth - Senior Microservices Developer" loading="lazy"
                 class="about__image">
             </div>
           </div>
@@ -618,16 +619,47 @@
          CONTACT SECTION
          ═══════════════════════════════════════════════ -->
     <section id="contact" class="section">
-      <div class="container contact">
-        <p class="contact__overline">05. What's Next?</p>
-        <h2 class="contact__title">Get In Touch</h2>
-        <p class="contact__desc">I'm currently looking for new opportunities and my inbox is always open. Whether you
-          have a question or just want to say hi, I'll try my best to get back to you!</p>
-        <div class="portfolio-btn-wrap">
-          <a href="mailto:neerukondapuneeth@gmail.com" class="portfolio-btn contact__cta">
-            <span class="portfolio-btn-fill"></span>
-            <span class="portfolio-btn-text">Say hello</span>
-          </a>
+      <div class="container">
+        <h2 class="section__title reveal-up" style="margin-bottom: var(--space-xl);">
+          <span class="section__number">05.</span> Get In Touch
+        </h2>
+
+        <div class="contact__grid">
+          <div class="contact__info">
+            <p class="contact__preheader reveal-up">HAVE SOMETHING IN MIND?</p>
+            <a href="mailto:neerukondapuneeth@gmail.com" class="contact__massive-link reveal-up">GET IN TOUCH</a>
+
+            <div class="contact__socials reveal-up">
+              <a href="https://linkedin.com/in/neerukonda-puneeth" target="_blank" rel="noopener noreferrer"
+                class="contact__social-link">LINKEDIN</a>
+              <a href="https://github.com/puneethkanna" target="_blank" rel="noopener noreferrer"
+                class="contact__social-link">GITHUB</a>
+              <a href="https://twitter.com/puneeth_kanna" target="_blank" rel="noopener noreferrer"
+                class="contact__social-link">TWITTER</a>
+            </div>
+
+            <div class="portfolio-btn-wrap reveal-up">
+              <a href="assets/resume.pdf" target="_blank" class="portfolio-btn contact__resume">
+                <span class="portfolio-btn-fill"></span>
+                <span class="portfolio-btn-text">View Resume</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Interactive Terminal -->
+          <div class="terminal reveal-up">
+            <div class="terminal__header">
+              <div class="terminal__dots">
+                <span class="terminal__dot terminal__dot--red"></span>
+                <span class="terminal__dot terminal__dot--yellow"></span>
+                <span class="terminal__dot terminal__dot--green"></span>
+              </div>
+              <span class="terminal__title">AGENT — BASH</span>
+            </div>
+            <div class="terminal__body" id="terminal-content">
+              <!-- Content injected by JS -->
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -671,6 +703,7 @@
        ═══════════════════════════════════════════════ -->
   <script src="assets/js/theme.js"></script>
   <script src="assets/js/animations.js" defer></script>
+  <script src="assets/js/contact.js" defer></script>
 </body>
 
 </html>
