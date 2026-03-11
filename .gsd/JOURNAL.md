@@ -189,3 +189,31 @@ Perfect the Cuberto button animation by removing GSAP physics entirely and recre
 ### Handoff Notes
 - The button implementation (`portfolio-btn.css`) is final regarding the static liquid fill and should NOT have mouse tracking added back.
 - When resuming, verify if the user is happy with this final button feel and what components should be overhauled next.
+
+---
+
+## Session: 2026-03-11 11:58 IST
+
+### Objective
+Complete the Contact section redesign and integrate interactive "developer" elements (Terminal, Flashlight cursor).
+
+### Accomplished
+- **Contact Section Redesign** — Implemented a massive, bold link style for email and social links with animated underlines.
+- **Interactive Terminal Emulator** — Built a vanilla JS terminal that types out info (whoami, skills, availability) when scrolled into view.
+- **Cursor Flashlight Effect** — Added the Brittany Chiang-inspired radial spotlight that tracks the mouse, providing subtle depth to the dark theme.
+- **Icon Cleanliness** — Swapped hero background tech icons for `-plain` variants and strictly enforced a monochromatic filter.
+- **Button Finalization** — Locked the Cuberto-style liquid fill buttons to a pure CSS implementation (`assets/css/portfolio-btn.css`), ensuring physical stability.
+
+### Verification
+- [x] Terminal animation triggers correctly via IntersectionObserver.
+- [x] Flashlight background follows mouse without lag.
+- [x] Social links hover states are consistent with global accent colors.
+- [x] Hero icons are monochromatic and silhouetted.
+
+### Paused Because
+User requested a session pause via `/pause`.
+
+### Handoff Notes
+- The Contact section is now a major interactive highlight.
+- If resuming for Phase 7 (Mobile Navigation), ensure the GSAP overlay logic is decoupled from the current flashlight effect.
+- The `assets/js/contact_me.js` file seems to be a legacy remnant from an older template (PHP mailer) and is currently NOT used by the new `index.html`. It can be safely removed or ignored.

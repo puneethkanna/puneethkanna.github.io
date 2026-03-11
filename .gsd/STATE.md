@@ -2,37 +2,42 @@
 
 ## Current Position
 - **Phase**: UI Design Refresh — Components
-- **Task**: Completed static CSS-only Cuberto button ("What We Do" style)
-- **Status**: Paused at 2026-03-08 20:56 IST
+- **Task**: Completed Contact section with interactive terminal emulator
+- **Status**: Paused at 2026-03-11 11:58 IST
 
 ## Last Session Summary
-Modified the CSS typing dots animation on the hero section name accent to run exactly once and resolve into a blinking terminal underscore (`_`) cursor. Prior to that, fixed the overscroll (spring animation) background color mismatch on MacOS by setting the `html` element's `background-color` to `var(--bg-primary)` and adding a transition in `main.css`.
+Focused on the Contact section and final polish of the UI components. Implemented a modern, interactive terminal emulator using vanilla JS to showcase bio/status info in a "developer-first" style. Also integrated the "Brittany Chiang" flashlight cursor effect and cleaned up the hero section icons to be monochromatic. Finalized the Cuberto-style buttons as pure CSS transitions (no JS tracking).
 
 ## In-Progress Work
-- Ready to move forward with the next UI component or overarching theme design.
-- Files modified: `assets/css/main.css` (html background, typing dots/terminal blink), `assets/css/portfolio-btn.css`, `index.html` (removed static dot, hero section).
-- Tests status: Verified button remains stationary while filling visually, typing dots run once and transition to a blinking terminal cursor.
+- **Contact Section**: Terminal emulator and massive link styling integrated and functional.
+- **Hero/Flashlight**: Monochromatic icons and radial spotlight background active.
+- **Buttons**: Pure CSS liquid fill implementation locked in `assets/css/portfolio-btn.css`.
+- Files modified: `assets/css/contact.css`, `assets/js/contact.js`, `index.html`, `assets/css/main.css`, `assets/css/portfolio-btn.css`.
+- Tests status: Terminal animation triggers on intersection; buttons fill correctly without JS; flashlight tracks cursor.
 
 ## Blockers
 - None.
 
 ## Context Dump
 ### Decisions Made
-- Scrapped all JS physics for the buttons entirely.
-- Decided to use pure CSS to recreate the static "liquid filling a glass" effect.
-- Created `assets/css/portfolio-btn.css` to store the isolated button mechanics to prevent global namespace collisions. 
+- **Terminal for Bio**: Decided to use a typing terminal for the contact section instead of a standard form to emphasize the "developer" identity.
+- **Flashlight Background**: Implemented the radial spotlight to add depth and interactivity to the dark theme.
+- **Plain Icons**: Switched to `-plain` icon variants in the hero mesh to reduce visual noise while maintaining the monochromatic look.
+- **CSS-Only Buttons**: Sticking with the pure CSS bottom-up fill for buttons to ensure stability and performance, as previous JS magnetic attempts were glitchy.
 
 ### Approaches Tried
-- Iteration 1 & 2: Tried building an aggressive magnetic hover effect with GSAP. It wobbled and sized improperly due to collisions.
-- Iteration 3: Built a highly refined subtle JS magnetic effect. User clarified they explicitly did *not* want the button to physically move.
-- Iteration 4 (Current): Tossed JS entirely. Built a pure visual CSS-only zoom and fluid-rise effect.
+- **JS Magnetic Buttons**: Tried various GSAP iterations; ultimately discarded in favor of pure CSS "What We Do" style per user reference.
+- **Icon Colors**: Tried multi-color icons; user preferred monochromatic silhouetted look.
 
 ### Current Hypothesis
-The pure CSS, stationary magnification approach perfectly replicates the explicit Cuberto "What We Do" reference button without stressing the browser or fighting with the site's other JS.
+The combination of the typing terminal and the flashlight background provides a premium, "living" feel that balances high-tech aesthetics with minimalism.
 
 ### Files of Interest
-- `assets/css/portfolio-btn.css`: Contains the final static liquid fill CSS logic.
+- `assets/css/contact.css`: New terminal and contact grid styles.
+- `assets/js/contact.js`: Interactive typing logic for the terminal.
+- `assets/css/portfolio-btn.css`: Final button mechanics.
 
 ## Next Steps
-1. Resume session.
-2. Confirm if the user is ready to move to the next section or if they want to apply global themes.
+1. **User Review**: Confirm if the new contact section and terminal animation are approved.
+2. **Mobile Nav (Phase 7)**: Complete the GSAP-driven mobile menu.
+3. **Blog Engine (Phase 8)**: Start planning the client-side Markdown blog infrastructure.

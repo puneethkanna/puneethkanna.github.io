@@ -63,70 +63,7 @@ function initAllAnimations() {
     });
 }
 
-/**
- * --- Hero Canvas: Animated Dot-Grid ---
- * High-performance canvas-based background for the hero section.
- */
-function initHeroCanvas() {
-    const canvas = document.getElementById('hero-canvas');
-    if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
-    let width, height;
-    let dots = [];
-    let mouseX = 0, mouseY = 0;
-    const spacing = 40;
-    const maxDistance = 150;
-
-    const resize = () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-        initDots();
-    };
-
-    const initDots = () => {
-        dots = [];
-        for (let x = 0; x < width; x += spacing) {
-            for (let y = 0; y < height; y += spacing) {
-                dots.push({ x, y, baseSize: 1, size: 1 });
-            }
-        }
-    };
-
-    window.addEventListener('resize', resize);
-    window.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-
-    const animate = () => {
-        ctx.clearRect(0, 0, width, height);
-        const theme = document.documentElement.getAttribute('data-theme') || 'dark';
-        ctx.fillStyle = theme === 'dark' ? 'rgba(255, 77, 90, 0.4)' : 'rgba(230, 57, 70, 0.2)';
-
-        dots.forEach(dot => {
-            const dx = mouseX - dot.x;
-            const dy = mouseY - dot.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-
-            if (dist < maxDistance) {
-                const scale = 1 + (1 - dist / maxDistance) * 3;
-                dot.size = gsap.utils.interpolate(dot.size, scale, 0.1);
-            } else {
-                dot.size = gsap.utils.interpolate(dot.size, dot.baseSize, 0.1);
-            }
-
-            ctx.beginPath();
-            ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
-            ctx.fill();
-        });
-
-        requestAnimationFrame(animate);
-    };
-
-    resize();
-    animate();
-}
 
 /**
  * --- Hero Typewriter ---
@@ -444,12 +381,9 @@ function initCursorFollower() {
 
     const interactive = document.querySelectorAll('a, button, .nav__brand');
     interactive.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            follower.classList.add('is-hovering');
-        });
+        // Simple scale back for safety, but removing the hovering class logic
         el.addEventListener('mouseleave', () => {
-            follower.classList.remove('is-hovering');
-            stickyElement = null; // Deactivate stickiness
+            stickyElement = null; 
             gsap.to(follower, { scale: 1, opacity: 1, duration: 0.3 });
         });
     });
@@ -548,6 +482,7 @@ function initLogoHacker() {
 
         let width, height;
         let animationFrameId;
+        let lastTheme = null;
 
         const TOTAL_PARTICLES = 130; // Dense enough for a good network
         const particles = [];
@@ -596,12 +531,22 @@ function initLogoHacker() {
                 this.baseRadius = this.label ? Math.random() * 2 + 4 : Math.random() * 1.5 + 1.2;
                 this.radius = 0;
 
-                // Sky Blue and Indigo cool palette
-                const isSky = Math.random() > 0.3;
-                this.color = isSky ? { r: 56, g: 189, b: 248 } : { r: 129, g: 140, b: 248 };
+                // Theme-aware color palette
+                this.isSky = Math.random() > 0.3;
+                const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+                this.updateColor(theme === 'dark');
 
                 this.alpha = 0;
                 this.pulseOffset = Math.random() * Math.PI * 2;  // Breathing phase offset
+            }
+
+            updateColor(isDark) {
+                if (isDark) {
+                    this.color = this.isSky ? { r: 56, g: 189, b: 248 } : { r: 129, g: 140, b: 248 };
+                } else {
+                    // Deeper, high-contrast colors for light theme
+                    this.color = this.isSky ? { r: 2, g: 132, b: 199 } : { r: 79, g: 70, b: 229 };
+                }
             }
 
             update() {
@@ -683,13 +628,22 @@ function initLogoHacker() {
                         const iconY = drawY - iconSize / 2;
 
                         // Filter for monochromatic pixel icons matching the theme
-                        // Base sepia hue ≈ 40-50°
-                        // Sky Blue destination ≈ 198° (rotate ≈ 150°)
-                        // Indigo destination ≈ 234° (rotate ≈ 185°)
-                        const isSky = this.color.r < 100; // Sky Blue has lower R than Indigo
-                        const themeFilter = isSky
-                            ? 'brightness(0) invert(1) sepia(100%) saturate(10000%) hue-rotate(150deg) brightness(1.2)'
-                            : 'brightness(0) invert(1) sepia(100%) saturate(10000%) hue-rotate(185deg) brightness(1.1)';
+                        const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+                        const isDark = theme === 'dark';
+                        const isSky = this.color.r < 100 && isDark || (this.color.r === 2 && !isDark);
+
+                        let themeFilter;
+                        if (isDark) {
+                            // Dark Theme: Bright white base, then tint
+                            themeFilter = isSky
+                                ? 'brightness(0) invert(1) sepia(100%) saturate(10000%) hue-rotate(150deg) brightness(1.2)'
+                                : 'brightness(0) invert(1) sepia(100%) saturate(10000%) hue-rotate(185deg) brightness(1.1)';
+                        } else {
+                            // Light Theme: Black base, then deep tint for contrast
+                            themeFilter = isSky
+                                ? 'brightness(0) sepia(100%) saturate(10000%) hue-rotate(170deg) brightness(0.7)'
+                                : 'brightness(0) sepia(100%) saturate(10000%) hue-rotate(210deg) brightness(0.6)';
+                        }
 
                         ctx.save();
                         ctx.globalAlpha = pulseAlpha * 0.85;
@@ -772,7 +726,15 @@ function initLogoHacker() {
             ctx.clearRect(0, 0, width, height);
 
             const theme = document.documentElement.getAttribute('data-theme') || 'dark';
-            const lineBaseColor = theme === 'dark' ? '148, 163, 184' : '15, 23, 42';
+            const isDark = theme === 'dark';
+
+            // Handle theme change dynamically
+            if (theme !== lastTheme) {
+                particles.forEach(p => p.updateColor(isDark));
+                lastTheme = theme;
+            }
+
+            const lineBaseColor = isDark ? '148, 163, 184' : '71, 85, 105';
 
             particles.forEach(p => p.update());
 
