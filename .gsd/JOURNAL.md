@@ -217,3 +217,29 @@ User requested a session pause via `/pause`.
 - The Contact section is now a major interactive highlight.
 - If resuming for Phase 7 (Mobile Navigation), ensure the GSAP overlay logic is decoupled from the current flashlight effect.
 - The `assets/js/contact_me.js` file seems to be a legacy remnant from an older template (PHP mailer) and is currently NOT used by the new `index.html`. It can be safely removed or ignored.
+
+---
+
+## Session: 2026-03-11 14:36 — 15:11 IST
+
+### Objective
+Implement the Brittany Chiang-inspired background spotlight effect and refine the About section profile photo.
+
+### Accomplished
+1. **Brittany Chiang Spotlight** — Replicated the radial gradient cursor-tracking effect with `z-index: 30`, allowing the soft glow (`rgba(29, 78, 216, 0.15)`) to visually "light up" the text. Simplified the implementation to be visible globally, including the hero section.
+2. **Profile Photo Refinement** — Removed the light accent tint (`opacity: 0.15` overlay) from the profile photo in the "About Me" section by disabling the `::after` pseudo-element.
+3. **JS Simplification** — Removed the scroll-linked GSAP opacity fade for the flashlight, making it an instant global interactive element.
+
+### Verification
+- [x] Spotlight tracks cursor globally (Hero + all sections).
+- [x] Spotlight is visible over text but doesn't block clicks (`pointer-events: none`).
+- [x] Profile photo shows natural colors (tint removed).
+- [x] Verified through browser screenshots `hero_section_light_effect`, `project_card_light_effect`, and `hero_section_init`.
+
+### Paused Because
+- User requested a session pause using `/pause`.
+
+### Handoff Notes
+- The spotlight effect is now a core part of the "breathing" UI and should NOT be restricted by scroll triggers.
+- The CSS variable `--mouse-x/y` is the source of truth for the spotlight's position.
+- If the user wants to adjust the spotlight's glow or size, modify the `radial-gradient` settings in `.brittany-flashlight` within `assets/css/main.css`.

@@ -2,42 +2,39 @@
 
 ## Current Position
 - **Phase**: UI Design Refresh — Components
-- **Task**: Completed Contact section with interactive terminal emulator
-- **Status**: Paused at 2026-03-11 11:58 IST
+- **Task**: Integrated Brittany Chiang-style cursor spotlight globally and refined About Me profile picture.
+- **Status**: Paused at 2026-03-11 15:15 IST
 
 ## Last Session Summary
-Focused on the Contact section and final polish of the UI components. Implemented a modern, interactive terminal emulator using vanilla JS to showcase bio/status info in a "developer-first" style. Also integrated the "Brittany Chiang" flashlight cursor effect and cleaned up the hero section icons to be monochromatic. Finalized the Cuberto-style buttons as pure CSS transitions (no JS tracking).
+Replicated the [brittanychiang.com](https://brittanychiang.com/) background light effect. Optimized the spotlight overlay (`.brittany-flashlight`) by increasing its `z-index` to 30 and ensuring it's visible globally (including the hero section) instead of only on scroll. Removed the GSAP scroll-trigger for the flashlight opacity, making it instantly reactive from page load. Also removed the light accent tint (`opacity: 0.15` overlay) from the profile photo in the "About Me" section per user request, restoring natural colors.
 
 ## In-Progress Work
-- **Contact Section**: Terminal emulator and massive link styling integrated and functional.
-- **Hero/Flashlight**: Monochromatic icons and radial spotlight background active.
-- **Buttons**: Pure CSS liquid fill implementation locked in `assets/css/portfolio-btn.css`.
-- Files modified: `assets/css/contact.css`, `assets/js/contact.js`, `index.html`, `assets/css/main.css`, `assets/css/portfolio-btn.css`.
-- Tests status: Terminal animation triggers on intersection; buttons fill correctly without JS; flashlight tracks cursor.
+- **Flashlight Effect**: Fully global, high-z-index (z-30), follows cursor behind/over text with `pointer-events: none`.
+- **About Section**: Profile photo tint removed (`display: none` on overlay).
+- Files modified: `assets/css/main.css`, `assets/js/animations.js`.
+- Tests status: Spotlight tracks cursor across all sections; Profile image renders with natural colors.
 
 ## Blockers
 - None.
 
 ## Context Dump
 ### Decisions Made
-- **Terminal for Bio**: Decided to use a typing terminal for the contact section instead of a standard form to emphasize the "developer" identity.
-- **Flashlight Background**: Implemented the radial spotlight to add depth and interactivity to the dark theme.
-- **Plain Icons**: Switched to `-plain` icon variants in the hero mesh to reduce visual noise while maintaining the monochromatic look.
-- **CSS-Only Buttons**: Sticking with the pure CSS bottom-up fill for buttons to ensure stability and performance, as previous JS magnetic attempts were glitchy.
+- **Global Spotlight**: Decided to make the spotlight visible from the start (Hero section) to match the reference site exactly and provide immediate visual "wow" factor.
+- **Higher Z-Index**: Set spotlight to `z-index: 30` to allow it to visually "light up" the text and elements as the cursor moves over them, while using `pointer-events: none` to maintain full interactivity.
+- **Removed Tint**: Removed the `0.15` opacity accent tint from the profile photo to satisfy the user's request for natural colors.
 
 ### Approaches Tried
-- **JS Magnetic Buttons**: Tried various GSAP iterations; ultimately discarded in favor of pure CSS "What We Do" style per user reference.
-- **Icon Colors**: Tried multi-color icons; user preferred monochromatic silhouetted look.
+- **Scroll-Linked Flashlight**: Initially had it fading in at the About section; replaced with global visibility for better impact.
+- **::after Overlay**: Used to tint the profile photo; now disabled.
 
 ### Current Hypothesis
-The combination of the typing terminal and the flashlight background provides a premium, "living" feel that balances high-tech aesthetics with minimalism.
+The global spotlight combined with the clean, natural profile photo creates a more professional yet highly interactive "developer" aesthetic.
 
 ### Files of Interest
-- `assets/css/contact.css`: New terminal and contact grid styles.
-- `assets/js/contact.js`: Interactive typing logic for the terminal.
-- `assets/css/portfolio-btn.css`: Final button mechanics.
+- `assets/css/main.css`: Spotlight styling and profile photo refinement.
+- `assets/js/animations.js`: Mouse tracking and flashlight logic (simplified).
 
 ## Next Steps
-1. **User Review**: Confirm if the new contact section and terminal animation are approved.
+1. **User Review**: Confirm if the global spotlight intensity and size are perfect.
 2. **Mobile Nav (Phase 7)**: Complete the GSAP-driven mobile menu.
-3. **Blog Engine (Phase 8)**: Start planning the client-side Markdown blog infrastructure.
+3. **Blog Engine (Phase 8)**: Plan the client-side Markdown blog infrastructure.
