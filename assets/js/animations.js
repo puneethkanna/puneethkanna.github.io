@@ -156,20 +156,11 @@ function initHeroParallax() {
 }
 
 /**
- * --- Ambient Flashlight Fade ---
+ * --- Ambient Flashlight — Simplified for Global Use ---
  */
 function initFlashlight() {
-    gsap.to('.brittany-flashlight', {
-        opacity: 1, // Full opacity is handled in CSS logic now, this just makes it active
-        scrollTrigger: {
-            trigger: '#about', // Start revealing outside of hero
-            start: 'top 85%',
-            end: 'top 30%',
-            scrub: true,
-            onEnter: () => document.body.classList.add('is-scrolled'),
-            onLeaveBack: () => document.body.classList.remove('is-scrolled')
-        }
-    });
+    // ScrollTrigger fade removed; we want it visible everywhere
+    // Mouse tracking is handled globally in initCursorFollower()
 }
 
 /**
